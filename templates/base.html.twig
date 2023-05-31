@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+	<!--Head-->
+	<head>
+
+		<!--Charset-->
+		<meta
+		charset="UTF-8">
+
+		<!--Titre-->
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+
+		<!--Logo-->
+		<link rel="icon" href="images\logo-rond.png">
+
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+
+		<!--Stylesheets-->
+			{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+			<!--Police d'écriture-->
+			<link rel="preconnect" href="https://fonts.googleapis.com"> <link
+			rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+			<!--Montserrat-->
+			<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+			<!--Styles.css-->
+			<link
+			rel="stylesheet" href="/css/styles.css">
+
+			<!--All.css-->
+			<link
+			rel="stylesheet" href="/css/all.css">
+
+			<!--Bootstrap.css-->
+			<link rel="stylesheet" href="/css/bootstrap.css">
+		{% endblock %}
+
+		<!--Javascripts-->
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+
+			<!--Scripts.js-->
+			<script src="/js/scripts.js"></script>
+
+			<!--Bootstrap.js-->
+			<script src="/js/bootstrap.js"></script>
+		{% endblock %}
+	</head>
+
+	<!--Body-->
+	<body
+		id="page-top">
+
+		<!--Bouton pour revenir en haut-->
+		<a href="#top" id="toTopBtn" class="cd-top text-replace js-cd-top cd-top--is-visible cd-top--fade-out" data-abc="true"></a>
+
+		<!--Barre de navigation-->
+		<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+			<div
+				class="container-fluid px-4 px-lg-5">
+				<!--Logo-->
+				<a class="navbar-brand" href="#page-top">
+					Cœur de bourg
+				</a>
+
+				<!--Reponsive-->
+				<button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<!--Boutons-->
+				<div class="collapse navbar-collapse" id="main_nav">
+					<ul
+						class="navbar-nav ms-auto my-2 my-lg-0">
+
+						<!--Accueil-->
+						<li class="nav-item">
+							<a class="nav-link" href="/">Accueil</a>
+						</li>
+
+						<!--À propos-->
+						<li class="nav-item">
+							<a class="nav-link" href="/a-propos">À propos</a>
+						</li>
+
+						<!--News-->
+						<li class="nav-item">
+							<a class="nav-link" href="/news">News</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+
+		<!--Image de couverture-->
+		<header class="masthead">
+			<div class="container px-4 px-lg-5 h-100">
+				<div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+					<div class="col-lg-8 align-self-end">
+						<h1 class="text-white font-weight-bold" style="letter-spacing: 10px">
+							ÉPICERIE</h1>
+					</div>
+					<div class="col-lg-8 align-self-baseline">
+						<h3 class="text-white-75" style="letter-spacing: 2px">CŒUR DE BOURG</h3><br>
+						<a href="#presentation" class="btn btn-lg btn-light fw-bold border-white bg-white">En savoir plus</a>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<div
+			class="col-lg-8 mx-auto p-5 py-md-5">
+
+			<!--Extend de la page-->
+			<main>
+				{% block body %}{% endblock %}
+			</main>
+
+			<!--Footer-->
+			<footer class="pt-5 my-5 text-muted">
+				<table style="width: 100%">
+					<tr>
+						<td>Copyright &copy; Mairie de Saint-Quentin-de-Caplong -
+							{{ ''|date('Y') }}</td>
+						<td align="right">
+							<a href="/mentions" class="nav-link">Mentions légales</a>
+						</td>
+					</tr>
+				</table>
+			</footer>
+		</div>
+	</body>
+</html>
+

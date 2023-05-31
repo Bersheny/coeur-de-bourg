@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+    color: black;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+
+h2 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: 900;
+}
+
+p {
+    line-height: 1.6;
+}
+
+h2 span {
+    font-size: 1.2rem;
+}
+
+.absolute {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    margin-top: 100px;
+}
+
+#content {
+    padding: 100px 0;
+}
+
+.text-white-75 {
+    color: rgba(255, 255, 255, 0.75) !important;
+  }
