@@ -8,6 +8,10 @@
 		<meta
 		charset="UTF-8">
 
+		<!--Viewport-->
+		<meta
+		name="viewport" content="width=device-width, initial-scale=1">
+
 		<!--Titre-->
 		<title>
 			{% block title %}Welcome!
@@ -30,6 +34,54 @@
 			<link
 			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+			<!--Quicksand-->
+			<link
+			href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+			<!--Comfortaa-->
+			<link
+			href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+			<!--Varela Round-->
+			<link
+			href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
+			<!--Satisfy-->
+			<link
+			href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+
+			<!--Indie Flower-->
+			<link
+			href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+
+			<!--Rubik-->
+			<link
+			href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+			<!--Amatic SC-->
+			<link
+			href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+
+			<!--Poiret One-->
+			<link
+			href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+
+			<!--Handlee-->
+			<link
+			href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+
+			<!--Neucha-->
+			<link
+			href="https://fonts.googleapis.com/css2?family=Neucha&display=swap" rel="stylesheet">
+
+			<!--Nothing You Could Do-->
+			<link
+			href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
+
+			<!--Caveat-->
+			<link
+			href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 			<!--Styles.css-->
 			<link
 			rel="stylesheet" href="/css/styles.css">
@@ -39,7 +91,11 @@
 			rel="stylesheet" href="/css/all.css">
 
 			<!--Bootstrap.css-->
-			<link rel="stylesheet" href="/css/bootstrap.css">
+			<link
+			rel="stylesheet" href="/css/bootstrap.css">
+
+			<!--Fontawesome.css-->
+			<link rel="stylesheet" href="/css/fontawesome.css">
 		{% endblock %}
 
 		<!--Javascripts-->
@@ -55,19 +111,30 @@
 	</head>
 
 	<!--Body-->
-	<body
-		id="page-top">
+	<body id="top">
 
 		<!--Bouton pour revenir en haut-->
-		<a href="#top" id="toTopBtn" class="cd-top text-replace js-cd-top cd-top--is-visible cd-top--fade-out" data-abc="true"></a>
+		<button type="button" class="btn btn-dark btn-lg" id="btn-top">
+        	<i class="fa-solid fa-arrow-up"></i>
+    	</button>
 
 		<!--Barre de navigation-->
 		<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-			<div
-				class="container-fluid px-4 px-lg-5">
+			<div class="container-fluid px-4 px-lg-5">
+
+				{# <ul
+				class="list-group list-group-horizontal" style="list-style-type: none">
+												
+					<!--Instagram-->
+					<li>
+						<a class="navbar-brand" href="https://www.instagram.com/epicerie_coeur_de_bourg6/" target="_blank">
+							<i class="fa-brands fa-instagram fa-lg"></i>
+						</a>
+					</li>
+				</ul> #}
+
 				<!--Logo-->
-				<a class="navbar-brand" href="#page-top">
-					Cœur de bourg
+					<a class="navbar-brand" href="/" style="font-family: Amatic SC; font-weight:700; font-size: 36px;">CŒUR DE BOURG
 				</a>
 
 				<!--Reponsive-->
@@ -82,50 +149,59 @@
 
 						<!--Accueil-->
 						<li class="nav-item">
-							<a class="nav-link" href="/">Accueil</a>
-						</li>
-
-						<!--À propos-->
-						<li class="nav-item">
-							<a class="nav-link" href="/a-propos">À propos</a>
+							<a class="nav-link" href="#top" style="font-family: Amatic SC; font-weight:700; font-size: 30px; letter-spacing: 2px">Accueil</a>
 						</li>
 
 						<!--News-->
 						<li class="nav-item">
-							<a class="nav-link" href="/news">News</a>
+							<a class="nav-link" href="/news" style="font-family: Amatic SC; font-weight:700; font-size: 30px; letter-spacing: 2px">News</a>
+						</li>
+
+						<!--Pèlerins-->
+						<li class="nav-item">
+							<a class="nav-link" href="/pelerins" style="font-family: Amatic SC; font-weight:700; font-size: 30px; letter-spacing: 2px">Pèlerins</a>
+						</li>
+
+						<!--Partenaires-->
+						<li class="nav-item">
+							<a class="nav-link" href="/partenaires" style="font-family: Amatic SC; font-weight:700; font-size: 30px; letter-spacing: 2px">Partenaires</a>
+						</li>
+
+						<!--Contact-->
+						<li class="nav-item">
+							<a class="nav-link" href="/contact" style="font-family: Amatic SC; font-weight:700; font-size: 30px; letter-spacing: 2px">Contact</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 
-
 		<!--Image de couverture-->
 		<header class="masthead">
 			<div class="container px-4 px-lg-5 h-100">
 				<div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
 					<div class="col-lg-8 align-self-end">
-						<h1 class="text-white font-weight-bold" style="letter-spacing: 10px">
+						<h1 class="text-white font-weight-bold" style="letter-spacing: 10px; font-family: Amatic SC; font-size: 72px">
 							ÉPICERIE</h1>
 					</div>
 					<div class="col-lg-8 align-self-baseline">
-						<h3 class="text-white-75" style="letter-spacing: 2px">CŒUR DE BOURG</h3><br>
-						<a href="#presentation" class="btn btn-lg btn-light fw-bold border-white bg-white">En savoir plus</a>
+						<h1 class="text-white" style="letter-spacing: 2px; font-family: Amatic SC; font-size: 72px;">CŒUR DE BOURG</h1>
+						<h6 class="text-white-75" style="letter-spacing: 2px;">SAINT-QUENTIN-DE-CAPLONG</h6>
+						<a href="#presentation" class="btn btn-lg btn-light fw-bold border-white bg-white mt-3">En savoir plus</a>
 					</div>
+					<div id="presentation"></div>
 				</div>
 			</div>
 		</header>
 
-		<div
-			class="col-lg-8 mx-auto p-5 py-md-5">
+		<!--Extend de la page-->
+		<main>
+			{% block body %}{% endblock %}
+		</main>
 
-			<!--Extend de la page-->
-			<main>
-				{% block body %}{% endblock %}
-			</main>
-
-			<!--Footer-->
-			<footer class="pt-5 my-5 text-muted">
+		<!--Footer-->
+		<div class="mx-auto p-4 footer">
+			<footer class="text-muted">
 				<table style="width: 100%">
 					<tr>
 						<td>Copyright &copy; Mairie de Saint-Quentin-de-Caplong -

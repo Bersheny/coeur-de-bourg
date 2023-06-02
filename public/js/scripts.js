@@ -1,26 +1,11 @@
-let mybutton = document.getElementById("toTopBtn");
-mybutton.style.display = "none";
-
-window.onscroll = function () {
-	scrollFunction();
-};
-
-function scrollFunction() {
-	if (
-		document.body.scrollTop > 20 ||
-		document.documentElement.scrollTop > 20
-	) {
-		mybutton.style.display = "block";
-	} else {
-		mybutton.style.display = "none";
-	}
-}
-mybutton.addEventListener("click", backToTop);
-
-function backToTop() {
-	document.body.scrollTop = 0;
-	document.documentElement.scrollTop = 0;
-}
+/*!
+* Start Bootstrap - Creative v7.0.7 (https://startbootstrap.com/theme/creative)
+* Copyright 2013-2023 Start Bootstrap
+* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
+*/
+//
+// Scripts
+// 
 
 window.addEventListener('DOMContentLoaded', event => {
 
@@ -66,3 +51,21 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 });
+
+window.addEventListener('load', function () {
+    let btnTop = document.getElementById("btn-top");
+    // display the button when user scrolls more than 20px
+    window.onscroll = function () {
+        if (
+            document.body.scrollTop > 20 || document.documentElement.scrollTop > 20
+        ) {
+            btnTop.style.display = "block";
+        } else {
+            btnTop.style.display = "none";
+        }
+    };
+    btnTop.addEventListener("click", function () {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    });
+})
