@@ -9,8 +9,9 @@
 			<div class="row gx-4 gx-lg-5">
 				<div class="col-lg-7 col-md-6">
 					<div class="mt-5">
-						<h1 class="h1 mb-2" style="font-family: Amatic SC; font-weight: 700; color: #46b4b4">Qui sommes-nous ?</h1>
-						<p class="text-muted mb-0 mt-5">Située dans le village de
+						<h1 class="h1 mb-2" style="font-family: Amatic SC; font-weight: 700; color: #46b4b4">Qui sommes-nous ? <img src="images/icons/undraw_heart-fun-blue.svg" width="20rem"></img></h1>
+						<img src="images/icons/undraw_curved-underline-blue.svg" width="45rem"></img>
+						<p class="text-muted mb-0 mt-4">Située dans le village de
 							<b style="color: #46b4b4">Saint-Quentin-de-Caplong</b>,
 							<b style="color: #FF9FAC; font-family: Neucha; font-size: large;">Cœur de Bourg</b>
 							est une
@@ -28,9 +29,10 @@
 				</div>
 				<div class="col-lg-5 col-md-6 text-center">
 					<div class="mt-5">
-						<h1 class="h1 mb-2" style="font-family: Amatic SC; font-weight: 700; color: #46b4b4">Horaires d'ouverture</h1>
+						<h1 class="h1 mb-2" style="font-family: Amatic SC; font-weight: 700; color: #46b4b4">Horaires d'ouverture <img src="images/icons/undraw_alarm-clock-blue.svg" width="20rem"></img></h1>
+						<img src="images/icons/undraw_curved-underline-blue.svg" width="45rem"></img>
 						<div class="mt-4">
-							<p class="text-muted mb-0 mt-5">
+							<p class="text-muted mb-0 mt-4">
 								<b style="color: #46b4b4">Lundi au samedi</b><br>
 								07h30 - 12h30<br>
 								17h00 - 19h00<br><br>
@@ -54,73 +56,63 @@
 
 	<div class="div-bg-2" id="news">
 		<div class="col-lg-8 mx-auto p-5 py-md-5">
-			<h1 class="h1 mb-2 text-center" style="font-family: Amatic SC; font-weight: 700; color: #46b4b4">News</h1>
+			<h1 class="h1 mb-2 text-center" style="font-family: Amatic SC; font-weight: 700; color: #fff">News <img src="images/icons/undraw_sticky-note-white.svg" width="20rem"></img></h1>
+			<center><img src="images/icons/undraw_curved-underline-white.svg" width="45rem"></img></center>
 		</div>
 
+		{# <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+		<div class="carousel-inner">
+			{% for chunk in newsItems|batch(3) %}
+				<div class="carousel-item{% if loop.first %} active{% endif %}">
+					<div class="row">
+						{% for newsItem in chunk %}
+							<div class="col-md-4">
+								<div class="card">
+									<img src="{{ newsItem.image }}" class="card-img-top" alt="{{ newsItem.title }}">
+									<div class="card-body">
+										<h5 class="card-title">{{ newsItem.title }}</h5>
+										<p class="card-text">{{ newsItem.content }}</p>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			{% endfor %}
+		</div> #}
+
 		<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-			<div class="carousel-inner container mx-auto p-5 py-md-5">
+			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<div class="row">
-						<div class="col-md-4">
-							<div class="card">
-								<img src="images\logos\4.svg" class="card-img-top" style="width: auto;" alt="test">
-								<div class="card-body">
-									<h5 class="card-title">Bonjour1</h5>
-									<p class="card-text">Mon contenu1</p>
+					<div class="container">
+						<div class="row d-md-flex">
+							<div class="col-md-4">
+								<div class="card">
+									<img src="images\logos\4.svg" class="card-img-top w-100" alt="test">
+									<div class="card-body">
+										<h5 class="card-title">Bonjour1</h5>
+										<p class="card-text">Mon contenu1</p>
+									</div>
 								</div>
 							</div>
-						</div>
 
-						<div class="col-md-4">
-							<div class="card">
-								<img src="images\logos\4.svg" class="card-img-top" style="width: auto;" alt="test">
-								<div class="card-body">
-									<h5 class="card-title">Bonjour2</h5>
-									<p class="card-text">Mon contenu2</p>
+							<div class="col-md-4">
+								<div class="card">
+									<img src="images\logos\4.svg" class="card-img-top w-100" alt="test">
+									<div class="card-body">
+										<h5 class="card-title">Bonjour2</h5>
+										<p class="card-text">Mon contenu2</p>
+									</div>
 								</div>
 							</div>
-						</div>
 
-						<div class="col-md-4">
-							<div class="card">
-								<img src="images\logos\4.svg" class="card-img-top" style="width: auto;" alt="test">
-								<div class="card-body">
-									<h5 class="card-title">Bonjour3</h5>
-									<p class="card-text">Mon contenu3</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="carousel-item">
-					<div class="row">
-						<div class="col-md-4">
-							<div class="card">
-								<img src="images\logos\4.svg" class="card-img-top" style="width: auto;" alt="test">
-								<div class="card-body">
-									<h5 class="card-title">Bonjour4</h5>
-									<p class="card-text">Mon contenu4</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-md-4">
-							<div class="card">
-								<img src="images\logos\4.svg" class="card-img-top" style="width: auto;" alt="test">
-								<div class="card-body">
-									<h5 class="card-title">Bonjour5</h5>
-									<p class="card-text">Mon contenu5</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-md-4">
-							<div class="card">
-								<img src="images\logos\4.svg" class="card-img-top" style="width: auto;" alt="test">
-								<div class="card-body">
-									<h5 class="card-title">Bonjour6</h5>
-									<p class="card-text">Mon contenu6</p>
+							<div class="col-md-4">
+								<div class="card">
+									<img src="images\logos\4.svg" class="card-img-top w-100" alt="test">
+									<div class="card-body">
+										<h5 class="card-title">Bonjour3</h5>
+										<p class="card-text">Mon contenu3</p>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -128,33 +120,71 @@
 				</div>
 
 				<div class="carousel-item">
-					<div class="row">
-						<div class="col-md-4">
-							<div class="card">
-								<img src="images\logos\4.svg" class="card-img-top" style="width: auto;" alt="test">
-								<div class="card-body">
-									<h5 class="card-title">Bonjour7</h5>
-									<p class="card-text">Mon contenu7</p>
+					<div class="container">
+						<div class="row d-md-flex">
+							<div class="col-md-4">
+								<div class="card">
+									<img src="images\logos\4.svg" class="card-img-top w-100" alt="test">
+									<div class="card-body">
+										<h5 class="card-title">Bonjour4</h5>
+										<p class="card-text">Mon contenu4</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-4">
+								<div class="card">
+									<img src="images\logos\4.svg" class="card-img-top w-100" alt="test">
+									<div class="card-body">
+										<h5 class="card-title">Bonjour5</h5>
+										<p class="card-text">Mon contenu5</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-4">
+								<div class="card">
+									<img src="images\logos\4.svg" class="card-img-top w-100" alt="test">
+									<div class="card-body">
+										<h5 class="card-title">Bonjour6</h5>
+										<p class="card-text">Mon contenu6</p>
+									</div>
 								</div>
 							</div>
 						</div>
+					</div>
+				</div>
 
-						<div class="col-md-4">
-							<div class="card">
-								<img src="images\original.png" class="card-img-top" style="width: auto;" alt="test">
-								<div class="card-body">
-									<h5 class="card-title">Bonjour8</h5>
-									<p class="card-text">Mon contenu8</p>
+				<div class="carousel-item">
+					<div class="container">
+						<div class="row d-md-flex">
+							<div class="col-md-4">
+								<div class="card">
+									<img src="images\logos\4.svg" class="card-img-top w-100" alt="test">
+									<div class="card-body">
+										<h5 class="card-title">Bonjour7</h5>
+										<p class="card-text">Mon contenu7</p>
+									</div>
 								</div>
 							</div>
-						</div>
 
-						<div class="col-md-4">
-							<div class="card">
-								<img src="images\logos\4.svg" class="card-img-top" style="width: auto;" alt="test">
-								<div class="card-body">
-									<h5 class="card-title">Bonjour9</h5>
-									<p class="card-text">Mon contenu9</p>
+							<div class="col-md-4">
+								<div class="card">
+									<img src="images\original.png" class="card-img-top w-100" alt="test">
+									<div class="card-body">
+										<h5 class="card-title">Bonjour8</h5>
+										<p class="card-text">Mon contenu8</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-4">
+								<div class="card">
+									<img src="images\logos\4.svg" class="card-img-top w-100" alt="test">
+									<div class="card-body">
+										<h5 class="card-title">Bonjour9</h5>
+										<p class="card-text">Mon contenu9</p>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -162,26 +192,6 @@
 				</div>
 			</div>
 
-			{# <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-						<div class="carousel-inner">
-							{% for chunk in newsItems|batch(3) %}
-								<div class="carousel-item{% if loop.first %} active{% endif %}">
-									<div class="row">
-										{% for newsItem in chunk %}
-											<div class="col-md-4">
-												<div class="card">
-													<img src="{{ newsItem.image }}" class="card-img-top" alt="{{ newsItem.title }}">
-													<div class="card-body">
-														<h5 class="card-title">{{ newsItem.title }}</h5>
-														<p class="card-text">{{ newsItem.content }}</p>
-													</div>
-												</div>
-											</div>
-										{% endfor %}
-									</div>
-								</div>
-							{% endfor %}
-						</div> #}
 			<a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 				<span class="visually-hidden">Previous</span>
@@ -217,6 +227,8 @@
 						1-2 Questionnaires (anonyme ou non, satisfaction, demandes)<br>
 						Chemins de ronde ?<br>
 						Contact (Téléphone, mail)
+
+						Fiches boissons alcoolisés et non alcoolisés rotate avec du scotch, des pins ou des épingles comme "accrochés" sur le site
 
 						<br><br>
 

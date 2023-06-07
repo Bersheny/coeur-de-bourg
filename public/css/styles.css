@@ -215,11 +215,11 @@ header.masthead2 .h1 {
 }
 
 .div-bg-2 {
-    background-color:#FF9FAC;
+    background-color: #FF9FAC;
 }
 
 .div-bg-3 {
-    background-color:#46b4b4;
+    background-color: #46b4b4;
 }
 
 .cls-1 {
@@ -242,7 +242,23 @@ header.masthead2 .h1 {
 }
 
 @media (min-width: 1px) {
-.test {
-    max-width: 85%;
+    .test {
+        max-width: 85%;
+    }
 }
+
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img-top {
+    width: 5rem;
+    height: 20rem;
+    object-fit: cover;
+}
+
+.card-body {
+    flex-grow: 1;
 }
