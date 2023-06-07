@@ -50,17 +50,7 @@
 			07h30 - 12h30
 		</p>
 	</div>
-</div></div></div>
-
-<div class="row justify-content-center mt-5">
-<div class="col-6 text-center">
-<h1 class="h1 mb-2" style="font-family: Amatic SC; font-weight: 700; color: #46b4b4">Nous trouver <img src="images/icons/undraw_fun-arrow-blue.svg" width="20rem"></img></h1>
-<img src="images/icons/undraw_curved-underline-blue.svg" width="45rem"></img>
-<p class="text-muted mb-0 mt-4">L'épicerie se situe 109 Baron, 33220 Saint-Quentin-de-Caplong (<b style="color: red">à vérifier</b>)</p>
-</div>
-</div>
-
-</div></div>
+</div></div></div></div></div>
 
 {# Séparation entre partie 1 et partie 2 #}
 <div style="overflow: hidden;">
@@ -75,54 +65,152 @@
 <div class="div-bg-2" id="news">
 	<div class="col-lg-8 mx-auto p-5 py-md-5">
 		<h1 class="h1 mb-2 text-center" style="font-family: Amatic SC; font-weight: 700; color: #fff">News
-			<img src="images/icons/undraw_sticky-note-white.svg" width="20rem"></img>
+			<img src="images/icons/undraw_chat-text-white.svg" width="20rem"></img>
 	</h1>
 	<center><img src="images/icons/undraw_curved-underline-white.svg" width="45rem"></img>
-</center>
+</center></div>
 
-	<div class="row row-cols-1 row-cols-md-3 g-4 pt-5">
-		<div class="col">
-			<div class="card h-100">
-				<img src="images\logos\4.svg" class="card-img-top" alt="1">
-				<div class="card-body">
-					<h5 class="card-title">Logo</h5>
-					<p class="card-text line-clamp">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+	{# <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+	<div class="carousel-inner">
+		{% for chunk in newsItems|batch(3) %}
+			<div class="carousel-item{% if loop.first %} active{% endif %}">
+				<div class="row">
+					{% for newsItem in chunk %}
+						<div class="col-md-4">
+							<div class="card">
+								<img src="{{ newsItem.image }}" class="card-img-top" alt="{{ newsItem.title }}">
+								<div class="card-body">
+									<h5 class="card-title">{{ newsItem.title }}</h5>
+									<p class="card-text">{{ newsItem.content }}</p>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
 				</div>
-				<div class="card-footer">
-					<a href="#" class="btn btn-primary">Voir plus</a>      				
-					<small class="text-muted">Mis à jour le 07/06/2023</small>
-    			</div>
 			</div>
-		</div>
-		<div class="col">
-			<div class="card h-100">
-				<img src="images\dsqal.png" class="card-img-top" alt="2">
-				<div class="card-body">
-					<h5 class="card-title">Artiste</h5>
-					<p class="card-text line-clamp">This is a short card.</p>
-				</div>
-				<div class="card-footer">
-					<a href="#" class="btn btn-primary">Voir plus</a>      				
-					<small class="text-muted">Mis à jour le 07/06/2023</small>
-    			</div>
-			</div>
-		</div>
-		<div class="col">
-			<div class="card h-100">
-				<img src="images\original.png" class="card-img-top" alt="3">
-				<div class="card-body">
-					<h5 class="card-title">Background</h5>
-					<p class="card-text line-clamp">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-				</div>
-				<div class="card-footer">
-					<a href="#" class="btn btn-primary">Voir plus</a>      				
-					<small class="text-muted">Mis à jour le 07/06/2023</small>
-    			</div>
-			</div>
-		</div>
-	</div>
+		{% endfor %}
+	</div> #}
+
+<div id="carouselExample" class="carousel slide mb-md-5" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="container">
+                <div class="row d-md-flex">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="images\logos\4.svg" class="card-img-top w-100" alt="test">
+                            <div class="card-body">
+                                <h5 class="card-title">Bonjour1</h5>
+                                <p class="card-text">Mon contenu1</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="images\logos\4.svg" class="card-img-top w-100" alt="test">
+                            <div class="card-body">
+                                <h5 class="card-title">Bonjour2</h5>
+                                <p class="card-text">Mon contenu2</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="images\logos\4.svg" class="card-img-top w-100" alt="test">
+                            <div class="card-body">
+                                <h5 class="card-title">Bonjour3</h5>
+                                <p class="card-text">Mon contenu3</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="container">
+                <div class="row d-md-flex">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="images\logos\4.svg" class="card-img-top w-100" alt="test">
+                            <div class="card-body">
+                                <h5 class="card-title">Bonjour4</h5>
+                                <p class="card-text">Mon contenu4</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="images\logos\4.svg" class="card-img-top w-100" alt="test">
+                            <div class="card-body">
+                                <h5 class="card-title">Bonjour5</h5>
+                                <p class="card-text">Mon contenu5</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="images\logos\4.svg" class="card-img-top w-100" alt="test">
+                            <div class="card-body">
+                                <h5 class="card-title">Bonjour6</h5>
+                                <p class="card-text">Mon contenu6</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="container">
+                <div class="row d-md-flex">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="images\logos\4.svg" class="card-img-top w-100" alt="test">
+                            <div class="card-body">
+                                <h5 class="card-title">Bonjour7</h5>
+                                <p class="card-text">Mon contenu7</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="images\original.png" class="card-img-top w-100" alt="test">
+                            <div class="card-body">
+                                <h5 class="card-title">Bonjour8</h5>
+                                <p class="card-text">Mon contenu8</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="images\logos\4.svg" class="card-img-top w-100" alt="test">
+                            <div class="card-body">
+                                <h5 class="card-title">Bonjour9</h5>
+                                <p class="card-text">Mon contenu9</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExample" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </a>
 </div>
-
 
 <div style="overflow: hidden;">
 	<svg preserveaspectratio="none" viewbox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" style="fill: #FFF; width: 150%; height: 60px; transform: rotate(180deg) scaleX(-1);">
