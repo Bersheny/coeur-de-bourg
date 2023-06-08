@@ -269,3 +269,10 @@ header.masthead2 .h1 {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
+.form-label {
+    color: white;
+    font-weight: 700;
+    font-size: 32px;
+    font-family: Amatic SC;
+}

@@ -79,7 +79,7 @@
 	</div>
 
 	{# Séparation entre partie 1 et partie 2 #}
-	<div style="overflow: hidden;">
+	<div style="overflow: hidden;" id="news">
 		<svg preserveaspectratio="none" viewbox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" style="fill: #FF9FAC; width: 125%; height: 75px; transform: rotate(180deg);">
 			<path d="M0 0v46.29c47.79 22.2 103.59 32.17 158 28 70.36-5.37 136.33-33.31 206.8-37.5 73.84-4.36 147.54 16.88 218.2 35.26 69.27 18 138.3 24.88 209.4 13.08 36.15-6 69.85-17.84 104.45-29.34C989.49 25 1113-14.29 1200 52.47V0z" opacity=".25"/>
 			<path d="M0 0v15.81c13 21.11 27.64 41.05 47.69 56.24C99.41 111.27 165 111 224.58 91.58c31.15-10.15 60.09-26.07 89.67-39.8 40.92-19 84.73-46 130.83-49.67 36.26-2.85 70.9 9.42 98.6 31.56 31.77 25.39 62.32 62 103.63 73 40.44 10.79 81.35-6.69 119.13-24.28s75.16-39 116.92-43.05c59.73-5.85 113.28 22.88 168.9 38.84 30.2 8.66 59 6.17 87.09-7.5 22.43-10.89 48-26.93 60.65-49.24V0z" opacity=".5"/>
@@ -88,7 +88,7 @@
 	</div>
 
 	{# Partie 2 #}
-	<div class="div-bg-2" id="news">
+	<div class="div-bg-2">
 		<div class="col-lg-8 mx-auto p-5 py-md-5">
 			<h1 class="h1 mb-2 text-center" style="font-family: Amatic SC; font-weight: 700; color: #fff">News
 				<img src="images/icons/undraw_sticky-note-white.svg" width="20rem">
@@ -101,7 +101,7 @@
 					<div class="card h-100">
 						<img src="images\logos\4.svg" class="card-img-top" alt="1">
 						<div class="card-body">
-							<h5 class="card-title">Logo</h5>
+							<h5 class="card-title" style="font-family: Amatic SC; font-size: 28px; font-weight: 700;">Logo</h5>
 							<p class="card-text line-clamp text-muted">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
 						</div>
 						<div class="card-footer">
@@ -114,7 +114,7 @@
 					<div class="card h-100">
 						<img src="images\dsqal.png" class="card-img-top" alt="2">
 						<div class="card-body">
-							<h5 class="card-title">Artiste</h5>
+							<h5 class="card-title" style="font-family: Amatic SC; font-size: 28px; font-weight: 700;">Artiste</h5>
 							<p class="card-text line-clamp text-muted">This is a short card.</p>
 						</div>
 						<div class="card-footer">
@@ -127,7 +127,7 @@
 					<div class="card h-100">
 						<img src="images\original.png" class="card-img-top" alt="3">
 						<div class="card-body">
-							<h5 class="card-title">Background</h5>
+							<h5 class="card-title" style="font-family: Amatic SC; font-size: 28px; font-weight: 700;">Background</h5>
 							<p class="card-text line-clamp text-muted">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
 						</div>
 						<div class="card-footer">
@@ -144,7 +144,7 @@
 			class="div-bg-1">
 
 			{# Séparation entre partie 2 et partie 3 #}
-			<div style="overflow: hidden;">
+			<div style="overflow: hidden;" id="produits">
 				<svg preserveaspectratio="none" viewbox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" style="fill: #FF9FAC; width: 150%; height: 60px; transform: scaleX(-1);">
 					<path d="M0 0v46.29c47.79 22.2 103.59 32.17 158 28 70.36-5.37 136.33-33.31 206.8-37.5 73.84-4.36 147.54 16.88 218.2 35.26 69.27 18 138.3 24.88 209.4 13.08 36.15-6 69.85-17.84 104.45-29.34C989.49 25 1113-14.29 1200 52.47V0z" opacity=".25"/>
 					<path d="M0 0v15.81c13 21.11 27.64 41.05 47.69 56.24C99.41 111.27 165 111 224.58 91.58c31.15-10.15 60.09-26.07 89.67-39.8 40.92-19 84.73-46 130.83-49.67 36.26-2.85 70.9 9.42 98.6 31.56 31.77 25.39 62.32 62 103.63 73 40.44 10.79 81.35-6.69 119.13-24.28s75.16-39 116.92-43.05c59.73-5.85 113.28 22.88 168.9 38.84 30.2 8.66 59 6.17 87.09-7.5 22.43-10.89 48-26.93 60.65-49.24V0z" opacity=".5"/>
@@ -168,9 +168,8 @@
 				</div>
 			</div>
 
-
 			{# Séparation entre partie 3 et partie 4 #}
-			<div style="overflow: hidden;">
+			<div style="overflow: hidden;" id="contact">
 				<svg preserveaspectratio="none" viewbox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" style="fill: #FF9FAC; width: 125%; height: 75px; transform: rotate(180deg);">
 					<path d="M0 0v46.29c47.79 22.2 103.59 32.17 158 28 70.36-5.37 136.33-33.31 206.8-37.5 73.84-4.36 147.54 16.88 218.2 35.26 69.27 18 138.3 24.88 209.4 13.08 36.15-6 69.85-17.84 104.45-29.34C989.49 25 1113-14.29 1200 52.47V0z" opacity=".25"/>
 					<path d="M0 0v15.81c13 21.11 27.64 41.05 47.69 56.24C99.41 111.27 165 111 224.58 91.58c31.15-10.15 60.09-26.07 89.67-39.8 40.92-19 84.73-46 130.83-49.67 36.26-2.85 70.9 9.42 98.6 31.56 31.77 25.39 62.32 62 103.63 73 40.44 10.79 81.35-6.69 119.13-24.28s75.16-39 116.92-43.05c59.73-5.85 113.28 22.88 168.9 38.84 30.2 8.66 59 6.17 87.09-7.5 22.43-10.89 48-26.93 60.65-49.24V0z" opacity=".5"/>
@@ -180,47 +179,52 @@
 		</div>
 
 		{# Partie 4 #}
-		<div class="div-bg-2" id="partenaires">
-			<div class="col-lg-8 mx-auto p-5 py-md-5">
-				<h1 class="h1 mb-2 text-center" style="font-family: Amatic SC; font-weight: 700; color: #fff">Partenaires
-					<img src="images/icons/undraw_sticky-note-white.svg" width="20rem">
+		<div class="div-bg-2">
+			<div class="col-lg-6 mx-auto p-5 py-md-5">
+				<h1 class="h1 mb-2 text-center" style="font-family: Amatic SC; font-weight: 700; color: #fff">Contact
+					<img src="images/icons/undraw_chat-text-white.svg" width="20rem">
 				</h1>
 				<center><img src="images/icons/undraw_fun-underline-white.svg" width="45rem"></center>
+
+				{# Formulaire de contact #}
+				<form class="pt-5">
+					<div class="row g-3 mb-3">
+						<div class="col-sm-6">
+							<label class="form-label" for="nom">Nom</label>
+							<input type="text" class="form-control" placeholder="Nom" aria-label="Nom">
+						</div>
+						<div class="col-sm">
+							<label class="form-label" for="nom">Prénom</label>
+							<input type="text" class="form-control" placeholder="Prénom" aria-label="Prénom">
+						</div>
+					</div>
+					<div class="row g-3 mb-3">
+						<div class="col-sm-6">
+							<label class="form-label" for="nom">E-mail</label>
+							<input type="email" class="form-control" placeholder="E-mail" aria-label="E-mail">
+						</div>
+						<div class="col-sm">
+							<label class="form-label" for="nom">Téléphone</label>
+							<input type="text" class="form-control" placeholder="Téléphone" aria-label="Téléphone">
+						</div>
+					</div>
+
+					<div class="row g-3 mb-3">
+						<div class="col-sm-12">
+							<label class="form-label" for="nom">Message</label>
+							<textarea type="text" class="form-control" placeholder="Message" aria-label="Message" style="height: 10rem;"></textarea>
+						</div>
+					</div>
+
+					<div class="row g-3 mb-3">
+						<div class="col-auto">
+							<button class="btn btn-primary" id="submitButton" type="submit" style="font-family: Amatic SC; font-size: 28px; font-weight: 700;">Envoyer</button>
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
+	</div>
 
-
-		<div class="row gx-4 gx-lg-5">
-			<div class="col-lg-7 col-md-6">
-				<div class="mt-5">
-					- Qui sommes-nous ?<br>
-					- Horaires<br>
-					- Nous trouver<br>
-					- News<br>
-
-					<br>
-					- Boissons. Fiches boissons alcoolisés et non alcoolisés rotate avec du scotch, des pins ou des épingles (à rajouter sur Canva avec fond transparent) comme "accrochés" sur le site avec des shadows
-					<br>
-					- Partenaires (Producteurs locaux, associations)<br>
-					- Pèlerins<br>
-					- 1-2 Questionnaires (anonyme ou non, satisfaction, demandes)<br>
-					- Chemins de ronde ?<br>
-					- Contact (Téléphone, mail)<br>
-				</div>
-			</div>
-
-			<div class="col-lg-5 col-md-6 text-center">
-				<div class="mt-5">
-					<svg id="10015.io" width="480" height="480" "0 0 480 480" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-						<defs>
-							<clipPath id="blob">
-								<path fill="#474bff" d="M389,315.5Q361,391,282,396Q203,401,116,371.5Q29,342,52,251.5Q75,161,133,93.5Q191,26,281.5,50Q372,74,394.5,157Q417,240,389,315.5Z"/>
-							</clipPath>
-						</defs>
-						<image x="0" y="0" width="100%" height="100%" clip-path="url(#blob)" xlink:href="images\dsqal.png" preserveaspectratio="xMidYMid slice"></image>
-				</svg>
-			</div>
-		</div>
-
-	{% endblock %}
+{% endblock %}
 
