@@ -223,6 +223,21 @@
 					<a href="/mentions" class="nav-link">Mentions légales</a>
 				</div>
 			</div>
+			<!--Logout-->
+            {% if app.user %}
+            <a class="nav-link btn btn-danger" aria-current="page" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> {{'Sign out'|trans}}</a>
+            {% else %}
+
+            <!--Login-->
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/login"><i class="fa-solid fa-arrow-right-to-bracket"></i> {{'Sign in'|trans}}</a>
+          </li>
+
+          <!--Register-->
+          <li class="nav-item">
+            <a class="nav-link btn btn-danger" aria-current="page" href="/register"><i class="fa-solid fa-user-pen"></i> {{'Sign up'|trans}}</a>
+          </li>
+          {% endif %}
 		</div>
 	</footer>
 </html>

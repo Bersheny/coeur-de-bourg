@@ -263,6 +263,11 @@ header.masthead2 .h1 {
     flex-grow: 1;
 }
 
+.card-footer {
+    border: 0 !important;
+    background-color: #fff !important;
+}
+
 .line-clamp {
     display: -webkit-box;
     -webkit-line-clamp: 3;
