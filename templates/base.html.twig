@@ -132,14 +132,14 @@
 		<div class="container-fluid px-4 px-lg-5">
 
 			{# <ul class="list-group list-group-horizontal" style="list-style-type: none">	
-												
-							<!--Instagram-->
-							<li>
-								<a class="navbar-brand" href="https://www.instagram.com/epicerie_coeur_de_bourg6/" target="_blank">
-									<i class="fa-brands fa-instagram fa-lg"></i>
-								</a>
-							</li>
-						</ul> #}
+															
+										<!--Instagram-->
+										<li>
+											<a class="navbar-brand" href="https://www.instagram.com/epicerie_coeur_de_bourg6/" target="_blank">
+												<i class="fa-brands fa-instagram fa-lg"></i>
+											</a>
+										</li>
+									</ul> #}
 
 			<!--Logo-->
 				<a class="navbar-brand ml2 .letter" href="#" style="font-family: Amatic SC; font-weight:700; font-size: 32px; width:auto;"> CŒUR DE BOURG
@@ -220,24 +220,22 @@
 					{{ ''|date('Y') }}
 				</div>
 				<div class="col-auto">
+					{% if app.user %}
+
+						<!--Déconnexion-->
+						<a href="/logout" class="btn btn-primary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">Se déconnecter</a>
+					{% else %}
+
+						<!--Connexion-->
+						<a href="/login" class="btn btn-primary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">Se connecter</a>
+
+						<!--Inscription-->
+						<a href="/register" class="btn btn-primary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">S'inscrire</a>
+					{% endif %}
+
 					<a href="/mentions" class="nav-link">Mentions légales</a>
 				</div>
 			</div>
-			<!--Logout-->
-            {% if app.user %}
-            <a class="nav-link btn btn-danger" aria-current="page" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> {{'Sign out'|trans}}</a>
-            {% else %}
-
-            <!--Login-->
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/login"><i class="fa-solid fa-arrow-right-to-bracket"></i> {{'Sign in'|trans}}</a>
-          </li>
-
-          <!--Register-->
-          <li class="nav-item">
-            <a class="nav-link btn btn-danger" aria-current="page" href="/register"><i class="fa-solid fa-user-pen"></i> {{'Sign up'|trans}}</a>
-          </li>
-          {% endif %}
 		</div>
 	</footer>
 </html>
