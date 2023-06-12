@@ -1,0 +1,59 @@
+{% extends 'navbar.html.twig' %}
+
+{% block title %}Register
+{% endblock %}
+
+{% block body %}
+
+	<!--Image de couverture-->
+	<header class="masthead2">
+		<div class="container px-4 px-lg-5 h-100">
+			<div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+				<div class="col-lg-8 align-self-end">
+					<h1 class="text-white font-weight-bold" style="letter-spacing: 10px; font-family: Amatic SC; font-size: 72px">
+						ÉPICERIE</h1>
+				</div>
+				<div class="col-lg-8 align-self-baseline">
+					<h1 class="text-white" style="letter-spacing: 2px; font-family: Amatic SC; font-size: 72px;">CŒUR DE BOURG</h1>
+					<h6 class="text-white-75" style="letter-spacing: 2px;">SAINT-QUENTIN-DE-CAPLONG</h6>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="div-bg-1">
+		<div class="col-lg-8 mx-auto p-5 py-md-5">
+			<div class="mt-5 text-center">
+				<h1 class="h1 mb-2" style="font-family: Amatic SC; font-weight: 700; color: #46b4b4">Inscription
+					<i class="fa-solid fa-user-plus fa-2xs"></i>
+				</h1>
+				<img src="images/icons/undraw_fun-underline-blue.svg" width="45rem">
+			</div>
+			{{ form_start(registrationForm) }}
+			{{ form_row(registrationForm.first_name, { 'attr': { 'class': 'form-control mb-3', 'id': 'first_name', 'name': '_first_name', 'aria-label': 'first_name' }, label: 'Prénom', 'label_attr': {'class': 'form-label text-black'} }) }}
+
+			{{ form_row(registrationForm.last_name, { 'attr': { 'class': 'form-control mb-3', 'id': 'last_name', 'name': '_last_name', 'aria-label': 'last_name' }, label: 'Nom', 'label_attr': {'class': 'form-label text-black'} }) }}
+
+			{{ form_row(registrationForm.email, { 'attr': { 'class': 'form-control mb-3', 'id': 'username', 'name': '_username', 'aria-label': 'email' }, label: 'E-mail', 'label_attr': {'class': 'form-label text-black'} }) }}
+
+			{{ form_row(registrationForm.plainPassword, { 'attr': { 'class': 'form-control', 'id': 'password', 'name': '_password', 'aria-label': 'password' }, label: 'Mot de passe', 'label_attr': {'class': 'form-label text-black'} }) }}
+
+			<div id="emailHelp" class="form-text mb-3">
+				Veillez à ne jamais partager vos informations d'identification.
+			</div>
+
+            {{ form_row(registrationForm.roles, { 'label': 'Rôle', 'attr': { 'class': 'form-control mb-3', 'id': 'roles', 'name': '_roles', 'aria-label': 'roles' }, 'label_attr': {'class': 'form-label text-black'} }) }}
+
+			<button class="btn btn-primary mt-4" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;" type="submit" class="btn">S'enregistrer</button>
+			{{ form_end(registrationForm) }}
+		</div>
+
+		{# <div class="input-group">
+		        {{ form_row(registrationForm.plainPassword, { 'attr': { 'class': 'form-control', 'id': 'password', 'name': '_password', 'aria-label': 'password' }, label: 'Mot de passe', 'label_attr': {'class': 'form-label text-black'} }) }}
+		        <span class="input-group-text" onclick="password_show_hide();">
+		            <i class="fas fa-eye" id="show_eye"></i>
+		            <i class="fas fa-eye-slash d-none" id="hide_eye"></i>
+		        </span>
+		    </div> #}
+	{% endblock %}
+

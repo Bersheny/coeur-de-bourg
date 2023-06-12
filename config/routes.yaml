@@ -3,3 +3,9 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+send_email:
+  path: /send-email
+  controller: App\Controller\DefaultController::sendEmail
+  methods: [POST]
+

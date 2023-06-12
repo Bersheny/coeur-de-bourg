@@ -20,14 +20,14 @@ class UserFixtures extends Fixture
         $superAdmin = new TblUsers();
         $superAdmin->setEmail('coeurdebourg@admin.fr');
 
-        $plaintextPassword = "superadmin";
+        $plaintextPassword = "3zMeRR3VASJ549bu";
         $hashedPassword = $this->passwordHasher->hashPassword(
             $superAdmin,
             $plaintextPassword
         );
         $superAdmin->setPassword($hashedPassword);
         $superAdmin->setRoles([
-            "ROLE_SUPER_ADMIN",
+            "ROLE_ADMIN",
         ]);
         
         $superAdmin->setFirstName('coeurdebourg');

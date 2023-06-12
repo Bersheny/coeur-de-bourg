@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil - Coeur de bourg
+{% block title %}Accueil - Cœur de bourg
 {% endblock %}
 
 {% block body %}
 
 	{# Partie 1 #}
-	<div class="div-bg-1">
+	<div class="div-bg-1" id="presentation">
 		<div class="col-lg-8 mx-auto p-5 py-md-5">
 			<div class="row gx-4 gx-lg-5">
 				<div class="col-lg-7 col-md-6">
@@ -67,7 +67,11 @@
 									<img src="images/icons/undraw_fun-arrow-blue.svg" width="25rem">
 								</h1>
 								<img src="images/icons/undraw_fun-underline-blue.svg" width="45rem">
-								<p class="text-muted mb-0 mt-4">L'épicerie <b style="color: #FF9FAC; font-family: Neucha; font-size: large;">Cœur de Bourg</b> se situe au cœur du village de <b style="color: #46b4b4">Saint-Quentin-de-Caplong</b></p>
+								<p class="text-muted mb-0 mt-4">L'épicerie
+									<b style="color: #FF9FAC; font-family: Neucha; font-size: large;">Cœur de Bourg</b>
+									se situe au cœur du village de
+									<b style="color: #46b4b4">Saint-Quentin-de-Caplong</b>
+								</p>
 							</div>
 						</div>
 					</div>
@@ -138,7 +142,8 @@
 			</div>
 
 			<div class="col-lg-8 mx-auto mt-5 text-center">
-			<a href="#" class="btn btn-primary btn-sm" style="font-family: Amatic SC; font-size: 28px; font-weight: 700;">Toutes les news <img src="images/icons/undraw_circled-arrow-white.svg" width="15rem"></a>
+				<a href="#" class="btn btn-primary btn-sm" style="font-family: Amatic SC; font-size: 28px; font-weight: 700;">Toutes les news
+					<img src="images/icons/undraw_circled-arrow-white.svg" width="15rem"></a>
 			</div>
 		</div>
 
@@ -190,32 +195,39 @@
 				<center><img src="images/icons/undraw_fun-underline-white.svg" width="45rem"></center>
 
 				{# Formulaire de contact #}
-				<form class="pt-5">
+				<form class="pt-5" method="POST" action="{{ path('send_email') }}">
 					<div class="row g-3 mb-3">
 						<div class="col-sm-6">
 							<label class="form-label" for="nom">Nom</label>
-							<input type="text" class="form-control" placeholder="Nom" aria-label="Nom">
+							<input type="text" class="form-control" aria-label="Nom" id="last_name" name="last_name" required>
 						</div>
 						<div class="col-sm">
 							<label class="form-label" for="nom">Prénom</label>
-							<input type="text" class="form-control" placeholder="Prénom" aria-label="Prénom">
+							<input type="text" class="form-control" aria-label="Prénom" id="first_name" name="first_name" required>
 						</div>
 					</div>
 					<div class="row g-3 mb-3">
 						<div class="col-sm-6">
 							<label class="form-label" for="nom">E-mail</label>
-							<input type="email" class="form-control" placeholder="E-mail" aria-label="E-mail">
+							<input type="email" class="form-control" aria-label="E-mail" id="email" name="email" required>
 						</div>
 						<div class="col-sm">
 							<label class="form-label" for="nom">Téléphone</label>
-							<input type="text" class="form-control" placeholder="Téléphone" aria-label="Téléphone">
+							<input type="text" class="form-control" aria-label="Téléphone" id="phone_number" name="phone_number" required>
+						</div>
+					</div>
+
+					<div class="row g-3 mb-3">
+						<div class="col-sm-12">
+							<label class="form-label" for="nom">Sujet</label>
+							<input type="text" class="form-control" aria-label="Sujet" id="subject" name="subject" required>
 						</div>
 					</div>
 
 					<div class="row g-3 mb-3">
 						<div class="col-sm-12">
 							<label class="form-label" for="nom">Message</label>
-							<textarea type="text" class="form-control" placeholder="Message" aria-label="Message" style="height: 10rem;"></textarea>
+							<textarea type="text" class="form-control" aria-label="Message" style="height: 10rem;" id="message" name="message" required></textarea>
 						</div>
 					</div>
 
@@ -225,6 +237,48 @@
 						</div>
 					</div>
 				</form>
+
+				{% if app.request.hasPreviousSession() %}
+					{% for flashMessage in app.session.flashbag.get('success') %}
+						<!-- Button trigger modal (hidden) -->
+						<button type="button" id="modalTriggerButton" data-bs-toggle="modal" data-bs-target="#successModal" style="display: none;"></button>
+
+						<!-- Modal -->
+						<div class="modal fade modal-dialog-centered" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="successModalLabel">Message envoyé</h5>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										{{ flashMessage }}
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-primary btn-sm" style="font-family: Amatic SC; font-size: 26px; font-weight: 700;" data-bs-dismiss="modal">Parfait !</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Script to trigger the modal on page load -->
+						<script>
+							document.addEventListener('DOMContentLoaded', function () {
+var modalTriggerButton = document.getElementById('modalTriggerButton');
+modalTriggerButton.click();
+});
+						</script>
+
+					{% endfor %}
+				{% endif %}
+
+				{# Message plus sobre que celui du haut mais beaucoup moins visible #}
+				{# {% if app.request.hasPreviousSession() %}
+					{% for flashMessage in app.session.flashbag.get('success') %}
+						<div class="alert alert-success">{{ flashMessage }}</div>
+					{% endfor %}
+				{% endif %} #}
+
 			</div>
 		</div>
 	</div>
