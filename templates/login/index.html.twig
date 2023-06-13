@@ -25,45 +25,62 @@
 		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 	{% endif %}
 
-	{# Partie 1 #}
-	<div class="div-bg-1">
-		<div class="col-lg-8 mx-auto p-5 py-md-5">
-			<div class="mt-5 text-center">
-				<h1 class="h1 mb-2" style="font-family: Amatic SC; font-weight: 700; color: #46b4b4">Connexion
-					<i class="fa-solid fa-right-to-bracket fa-2xs"></i>
-				</h1>
-				<img src="images/icons/undraw_fun-underline-blue.svg" width="45rem">
+	{% if app.user %}
+
+		{# Partie 1 #}
+		<div class="div-bg-1">
+			<div class="col-lg-8 mx-auto p-5 py-md-5">
+				<div class="mt-5 text-center">
+					<h1 class="h1 mb-2" style="font-family: Amatic SC; font-weight: 700; color: #46b4b4">Connexion
+						<i class="fa-solid fa-right-to-bracket fa-2xs"></i>
+					</h1>
+					<img src="images/icons/undraw_fun-underline-blue.svg" width="45rem">
+				</div>
+				<h4 class="text-center mt-5">Vous êtes déjà connecté !</h4>
 			</div>
+		</div>
 
-		<form action="{{ path('app_login') }}" method="post">
+	{% else %}
 
-			<div class="mb-4">
-				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+		{# Partie 1 #}
+		<div class="div-bg-1">
+			<div class="col-lg-8 mx-auto p-5 py-md-5">
+				<div class="mt-5 text-center">
+					<h1 class="h1 mb-2" style="font-family: Amatic SC; font-weight: 700; color: #46b4b4">Connexion
+						<i class="fa-solid fa-right-to-bracket fa-2xs"></i>
+					</h1>
+					<img src="images/icons/undraw_fun-underline-blue.svg" width="45rem">
+				</div>
 
-				<label class="form-label text-black" for="email">E-mail</label>
-				<input type="text" class="form-control" id="username" name="_username" aria-label="email" value="{{ last_username }}">
+				<form action="{{ path('app_login') }}" method="post">
+
+					<div class="mb-4">
+						<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+						<label class="form-label text-black" for="email">E-mail</label>
+						<input type="text" class="form-control" id="username" name="_username" aria-label="email" value="{{ last_username }}">
+					</div>
+
+					<label for="password" class="form-label text-black">Mot de passe</label>
+					<div class="input-group">
+						<input type="password" class="form-control" id="password" name="_password" aria-label="password">
+						<span class="input-group-text" onclick="password_show_hide();">
+							<i class="fas fa-eye" id="show_eye"></i>
+							<i class="fas fa-eye-slash d-none" id="hide_eye"></i>
+						</span>
+					</div>
+
+					<div id="emailHelp" class="form-text mb-3">
+						Veillez à ne jamais partager vos informations d'identification.
+					</div>
+					{# If you want to control the URL the user is redirected to on success
+								<input type="hidden" name="_target_path" value="/account"> #}
+
+					<button class="btn btn-primary" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;" type="submit">Se connecter</button>
+				</form>
 			</div>
+		</div>
+	{% endif %}
 
-			<label for="password" class="form-label text-black">Mot de passe</label>
-			<div class="input-group">
-				<input type="password" class="form-control" id="password" name="_password" aria-label="password">
-                <span class="input-group-text" onclick="password_show_hide();">
-						<i class="fas fa-eye" id="show_eye"></i>
-						<i class="fas fa-eye-slash d-none" id="hide_eye"></i>
-				</span>
-			</div>
-
-			<div id="emailHelp" class="form-text mb-3">
-				Veillez à ne jamais partager vos informations d'identification.
-			</div>
-			{# If you want to control the URL the user is redirected to on success
-			<input type="hidden" name="_target_path" value="/account"> #}
-
-			<button class="btn btn-primary"  style="font-family: Amatic SC; font-size: 22px; font-weight: 700;" type="submit">Se connecter</button>
-		</form>
-	</div>
-	</div>
-
-	
 {% endblock %}
 

@@ -17,20 +17,23 @@ class TblNews
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $description = null;
+
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
 
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $start_date_time = null;
+    #[ORM\Column(type: Types::DATE_IMMUTABLE)]
+    private ?\DateTimeImmutable $start_date_time = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $end_date_time = null;
+    #[ORM\Column(type: Types::DATE_IMMUTABLE)]
+    private ?\DateTimeImmutable $end_date_time = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $created_at = null;
+    #[ORM\Column]
+    private ?\DateTimeImmutable $created_at = null;
 
     public function getId(): ?int
     {
@@ -45,6 +48,18 @@ class TblNews
     public function setTitle(string $title): static
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): static
+    {
+        $this->description = $description;
 
         return $this;
     }
@@ -73,36 +88,36 @@ class TblNews
         return $this;
     }
 
-    public function getStartDateTime(): ?\DateTimeInterface
+    public function getStartDateTime(): ?\DateTimeImmutable
     {
         return $this->start_date_time;
     }
 
-    public function setStartDateTime(?\DateTimeInterface $start_date_time): static
+    public function setStartDateTime(\DateTimeImmutable $start_date_time): static
     {
         $this->start_date_time = $start_date_time;
 
         return $this;
     }
 
-    public function getEndDateTime(): ?\DateTimeInterface
+    public function getEndDateTime(): ?\DateTimeImmutable
     {
         return $this->end_date_time;
     }
 
-    public function setEndDateTime(?\DateTimeInterface $end_date_time): static
+    public function setEndDateTime(\DateTimeImmutable $end_date_time): static
     {
         $this->end_date_time = $end_date_time;
 
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): static
+    public function setCreatedAt(\DateTimeImmutable $created_at): static
     {
         $this->created_at = $created_at;
 
