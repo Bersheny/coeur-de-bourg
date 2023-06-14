@@ -36,7 +36,7 @@
 
 <div class="row row-cols-1 row-cols-md-2">
 	<div class="col">
-		{{ form_row(form.start_date, { 
+		{{ form_row(form.startDateTime, { 
     'label': 'Date de début', 
     'attr': { 'class': 'form-control mb-4', 'id': 'roles', 'name': '_roles', 'aria-label': 'roles' }, 
     'label_attr': {'class': 'form-label text-black'}, 
@@ -44,7 +44,7 @@
 }) }}
 	</div>
 	<div class="col">
-		{{ form_row(form.end_date, { 
+		{{ form_row(form.endDateTime, { 
     'label': 'Date de fin', 
     'attr': { 'class': 'form-control mb-4', 'id': 'roles', 'name': '_roles', 'aria-label': 'roles' }, 
     'label_attr': {'class': 'form-label text-black'}, 
@@ -63,7 +63,7 @@
 }) }}
 	</div>
 	<div class="col mb-4">
-		<center><img style="max-width: 15em; width: auto;" src="{{ asset('uploads/images/' ~ cdb_news.image) }}"></center>
+		<center><img style="max-width: 15em; width: auto;" src="{{ asset('uploads/images/' ~ tbl_news.image) }}"></center>
 	</div>
 </div>
 

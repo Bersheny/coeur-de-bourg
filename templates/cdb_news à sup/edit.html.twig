@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit CdbNews{% endblock %}
+
+{% block body %}
+    <h1>Edit CdbNews</h1>
+
+    {{ include('cdb_news/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_cdb_news_index') }}">back to list</a>
+
+    {{ include('cdb_news/_delete_form.html.twig') }}
+{% endblock %}

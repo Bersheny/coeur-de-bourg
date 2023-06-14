@@ -2,7 +2,7 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\TblUsers;
+use App\Entity\CdbUsers;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -17,7 +17,7 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        $superAdmin = new TblUsers();
+        $superAdmin = new CdbUsers();
         $superAdmin->setEmail('coeurdebourg@admin.fr');
 
         $plaintextPassword = "3zMeRR3VASJ549bu";
@@ -31,7 +31,7 @@ class UserFixtures extends Fixture
         ]);
         
         $superAdmin->setFirstName('coeurdebourg');
-        $superAdmin->setLastName('admin');
+        $superAdmin->setLastName('superadmin');
 
         $manager->persist($superAdmin);
 

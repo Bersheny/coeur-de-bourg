@@ -2,11 +2,11 @@
 
 namespace App\Controller;
 
-use App\Entity\CdbUsers;
+use App\Entity\TblUsers;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use Symfony\Component\Mime\Address;
-use App\Repository\CdbUsersRepository;
+use App\Repository\TblUsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,7 +19,7 @@ use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
 class RegistrationController extends AbstractController
 {
-    #[Route('/register', name: 'app_register')]
+    #[Route('/registers', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
@@ -27,7 +27,7 @@ class RegistrationController extends AbstractController
         //     $this->denyAccessUnlessGranted('ROLE_MODERATOR');
         // }
 
-        $user = new CdbUsers();
+        $user = new TblUsers();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 

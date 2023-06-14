@@ -221,16 +221,18 @@
 
 			{% if app.user %}
 
-				<!--Inscription-->
-				<a href="/register" class="btn btn-primary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">S'inscrire</a>
+					{% if 'ROLE_ADMIN' in app.user.roles %}
+					<!--Inscription-->
+					<a href="/register" class="btn btn-primary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">S'inscrire</a>
+					{% endif %}
 
-				<!--Déconnexion-->
-				<a href="/logout" class="btn btn-primary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">Se déconnecter</a>
-			{% else %}
+					<!--Déconnexion-->
+					<a href="/logout" class="btn btn-primary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">Se déconnecter</a>
+				{% else %}
 
-				<!--Connexion-->
-				<a href="/login" class="btn btn-primary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">Se connecter</a>
-			{% endif %}
+					<!--Connexion-->
+					<a href="/login" class="btn btn-primary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">Se connecter</a>
+				{% endif %}
 		</div>
 	</footer>
 </html>

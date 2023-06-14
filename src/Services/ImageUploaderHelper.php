@@ -18,7 +18,7 @@ class ImageUploaderHelper {
         $this->params = $params;
         }
 
-    public function uploadImage($form, $formation): String {
+    public function uploadImage($form, $news): String {
         $errorMessage = "";
         $imageFile = $form->get('image')->getData();
 
@@ -36,7 +36,7 @@ class ImageUploaderHelper {
             } catch (FileException $e) {
                $errorMessage = $e->getMessage();
             }
-            $formation->setImage($newFilename);
+            $news->setImage($newFilename);
         }
         return $errorMessage;
     }

@@ -55,7 +55,6 @@
 				<form action="{{ path('app_login') }}" method="post">
 
 					<div class="mb-4">
-						<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 						<label class="form-label text-black" for="email">E-mail</label>
 						<input type="text" class="form-control" id="username" name="_username" aria-label="email" value="{{ last_username }}">

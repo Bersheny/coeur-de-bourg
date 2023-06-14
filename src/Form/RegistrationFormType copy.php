@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\CdbUsers;
+use App\Entity\TblUsers;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Email;
@@ -101,7 +101,7 @@ class RegistrationFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => CdbUsers::class,
+            'data_class' => TblUsers::class,
             'multiple' => true,
         ]);
     }

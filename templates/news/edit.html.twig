@@ -26,14 +26,14 @@
 		<div class="col-lg-8 mx-auto p-5 py-md-5">
 			<div class="mt-5 text-center">
 				<h1 class="h1 mb-2" style="font-family: Amatic SC; font-weight: 700; color: #46b4b4">News - Modification
-					<img src="images/icons/undraw_sticky-note-blue.svg" width="20rem">
+					<img src="/images/icons/undraw_sticky-note-blue.svg" width="20rem">
 				</h1>
-				<img src="images/icons/undraw_fun-underline-blue.svg" width="45rem">
+				<img src="/images/icons/undraw_fun-underline-blue.svg" width="45rem">
 			</div>
 
-			{{ include('news/_form.html.twig', {'button_label': 'Update'}) }}
+			{{ include('news/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
 
-			<a href="{{ path('app_news_index') }}">back to list</a>
+			{# <a class="btn btn-primary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;" href="{{ path('app_news_index') }}">Revenir à la liste</a> #}
 
 			{{ include('news/_delete_form.html.twig') }}
 

@@ -26,57 +26,41 @@
 		<div class="col-lg-8 mx-auto p-5 py-md-5">
 			<div class="mt-5 text-center">
 				<h1 class="h1 mb-2" style="font-family: Amatic SC; font-weight: 700; color: #46b4b4">News - Index
-					<img src="images/icons/undraw_sticky-note-blue.svg" width="20rem">
+					<img src="/images/icons/undraw_sticky-note-blue.svg" width="20rem">
 				</h1>
-				<img src="images/icons/undraw_fun-underline-blue.svg" width="45rem">
+				<img src="/images/icons/undraw_fun-underline-blue.svg" width="45rem">
 			</div>
 
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Title</th>
-						<th>Description</th>
-						<th>Content</th>
-						<th>Image name</th>
-                        <th>Image</th>
-						<th>Start_date_time</th>
-						<th>End_date_time</th>
-						<th>Created_at</th>
-						<th>actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for tbl_news in tbl_news %}
-						<tr>
-							<td>{{ tbl_news.id }}</td>
-							<td>{{ tbl_news.title }}</td>
-							<td>{{ tbl_news.description }}</td>
-							<td>{{ tbl_news.content|raw }}</td>
-							<td>{{ tbl_news.image }}</td>
-                            <td><img src="/uploads/images/{{ tbl_news.image }}" class="d-block w-100 photo" alt="1"></td>
-							<td>{{ tbl_news.startDateTime ? tbl_news.startDateTime|date('Y-m-d') : '' }}</td>
-							<td>{{ tbl_news.endDateTime ? tbl_news.endDateTime|date('Y-m-d') : '' }}</td>
-							<td>{{ tbl_news.createdAt ? tbl_news.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-							<td>
-								<a href="{{ path('app_news_show', {'id': tbl_news.id}) }}">show</a>
-                                {% if app.user %}
-								<a href="{{ path('app_news_edit', {'id': tbl_news.id}) }}">edit</a>
-                                {% endif %}
-							</td>
-						</tr>
-					{% else %}
-						<tr>
-							<td colspan="9">no records found</td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
+			{% if app.user %}
+				<center><a href="{{ path('app_news_new') }}" class="btn btn-primary btn-sm mt-5" style="font-family: Amatic SC; font-size: 28px; font-weight: 700;">Créer une news</a></center>
+			{% endif %}
 
-            {% if app.user %}
-			<a href="{{ path('app_news_new') }}">Create new</a>
-            {% endif %}
-
+			<div class="row row-cols-1 row-cols-md-3 g-4 pt-5">
+				{% for cdb_news in cdb_news %}
+					<div class="col">
+						<div class="card h-100">
+							<img src="/uploads/images/{{ cdb_news.image }}" class="card-img-top" alt="1">
+							<div class="card-body">
+								<h5 class="card-title" style="font-family: Amatic SC; font-size: 28px; font-weight: 700;">{{ cdb_news.title }}</h5>
+								<p class="card-text line-clamp text-muted">Du
+									{{ cdb_news.startDate ? cdb_news.startDate|date('Y-m-d') : '' }}
+									au
+									{{ cdb_news.endDate ? cdb_news.endDate|date('Y-m-d') : '' }}</p>
+								<p class="card-text line-clamp text-muted">{{ cdb_news.description }}</p>
+							</div>
+							<div class="card-footer text-center">
+								<a href="{{ path('app_news_show', {'id': cdb_news.id}) }}" class="btn btn-primary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">EN SAVOIR PLUS</a>
+								{% if app.user %}
+									<a href="{{ path('app_news_edit', {'id': cdb_news.id}) }}" class="btn btn-secondary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">MODIFIER</a>
+									{{ include('news/_delete_form.html.twig') }}
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				{% else %}
+					<td colspan="9">Il n'y a aucune news !</td>
+				{% endfor %}
+			</div>
 		</div>
 	</div>
 
