@@ -26,6 +26,12 @@ class CdbPartners
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $website_link = null;
 
+    #[ORM\Column]
+    private ?\DateTimeImmutable $created_at = null;
+
+    #[ORM\ManyToOne(inversedBy: 'cdbPartners')]
+    private ?CdbUsers $created_by_id = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +81,30 @@ class CdbPartners
     public function setWebsiteLink(?string $website_link): static
     {
         $this->website_link = $website_link;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $created_at): static
+    {
+        $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getCreatedById(): ?CdbUsers
+    {
+        return $this->created_by_id;
+    }
+
+    public function setCreatedById(?CdbUsers $created_by_id): self
+    {
+        $this->created_by_id = $created_by_id;
 
         return $this;
     }

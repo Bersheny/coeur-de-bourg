@@ -12,5 +12,7 @@ class PartenairesController extends AbstractController
     public function index()
     {
         return $this->render('partenaires/index.html.twig');
+        // $cdbPartners->setCreatedAt(new DateTimeImmutable());
+        // $cdbPartner->setCreatedById($this->getUser());
     }
 }

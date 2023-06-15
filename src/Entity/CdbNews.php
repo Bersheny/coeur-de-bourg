@@ -35,6 +35,9 @@ class CdbNews
     #[ORM\Column]
     private ?\DateTimeImmutable $created_at = null;
 
+    #[ORM\ManyToOne(inversedBy: 'cdbNews')]
+    private ?CdbUsers $created_by_id = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +123,18 @@ class CdbNews
     public function setCreatedAt(\DateTimeImmutable $created_at): static
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getCreatedById(): ?CdbUsers
+    {
+        return $this->created_by_id;
+    }
+
+    public function setCreatedById(?CdbUsers $created_by_id): self
+    {
+        $this->created_by_id = $created_by_id;
 
         return $this;
     }

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\TblUsersRepository;
@@ -33,6 +35,14 @@ class TblUsers implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $password = null;
+
+    #[ORM\OneToMany(mappedBy: 'created_by_id', targetEntity: TblNews::class)]
+    private Collection $tblNews;
+
+    public function __construct()
+    {
+        $this->tblNews = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -123,5 +133,35 @@ class TblUsers implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection<int, TblNews>
+     */
+    public function getTblNews(): Collection
+    {
+        return $this->tblNews;
+    }
+
+    public function addTblNews(TblNews $tblNews): static
+    {
+        if (!$this->tblNews->contains($tblNews)) {
+            $this->tblNews->add($tblNews);
+            $tblNews->setCreatedById($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTblNews(TblNews $tblNews): static
+    {
+        if ($this->tblNews->removeElement($tblNews)) {
+            // set the owning side to null (unless already changed)
+            if ($tblNews->getCreatedById() === $this) {
+                $tblNews->setCreatedById(null);
+            }
+        }
+
+        return $this;
     }
 }

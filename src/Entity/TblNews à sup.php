@@ -35,6 +35,10 @@ class TblNews
     #[ORM\Column]
     private ?\DateTimeImmutable $created_at = null;
 
+    #[ORM\ManyToOne(inversedBy: 'tblNews')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?TblUsers $created_by_id = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +124,18 @@ class TblNews
     public function setCreatedAt(\DateTimeImmutable $created_at): static
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getCreatedById(): ?TblUsers
+    {
+        return $this->created_by_id;
+    }
+
+    public function setCreatedById(?TblUsers $created_by_id): static
+    {
+        $this->created_by_id = $created_by_id;
 
         return $this;
     }

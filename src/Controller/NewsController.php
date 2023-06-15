@@ -33,6 +33,7 @@ class NewsController extends AbstractController
 
         $cdbNews = new CdbNews();
         $cdbNews->setCreatedAt(new DateTimeImmutable());
+        $cdbNews->setCreatedById($this->getUser());
 
         $form = $this->createForm(CdbNewsType::class, $cdbNews);
         $form->handleRequest($request);

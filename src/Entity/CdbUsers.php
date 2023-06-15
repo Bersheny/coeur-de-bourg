@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CdbUsersRepository;
@@ -33,6 +35,18 @@ class CdbUsers implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $password = null;
+
+    #[ORM\OneToMany(mappedBy: 'created_by_id', targetEntity: CdbNews::class)]
+    private Collection $cdbNews;
+
+    #[ORM\OneToMany(mappedBy: 'created_by_id', targetEntity: CdbPartners::class)]
+    private Collection $cdbPartners;
+
+    public function __construct()
+    {
+        $this->cdbNews = new ArrayCollection();
+        $this->cdbPartners = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -123,5 +137,65 @@ class CdbUsers implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection<int, CdbNews>
+     */
+    public function getCdbNews(): Collection
+    {
+        return $this->cdbNews;
+    }
+
+    public function addCdbNews(CdbNews $cdbNews): self
+    {
+        if (!$this->cdbNews->contains($cdbNews)) {
+            $this->cdbNews->add($cdbNews);
+            $cdbNews->setCreatedById($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCdbNews(CdbNews $cdbNews): self
+    {
+        if ($this->cdbNews->removeElement($cdbNews)) {
+            // set the owning side to null (unless already changed)
+            if ($cdbNews->getCreatedById() === $this) {
+                $cdbNews->setCreatedById(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CdbPartners>
+     */
+    public function getCdbPartners(): Collection
+    {
+        return $this->cdbPartners;
+    }
+
+    public function addCdbPartner(CdbPartners $cdbPartner): self
+    {
+        if (!$this->cdbPartners->contains($cdbPartner)) {
+            $this->cdbPartners->add($cdbPartner);
+            $cdbPartner->setCreatedById($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCdbPartner(CdbPartners $cdbPartner): self
+    {
+        if ($this->cdbPartners->removeElement($cdbPartner)) {
+            // set the owning side to null (unless already changed)
+            if ($cdbPartner->getCreatedById() === $this) {
+                $cdbPartner->setCreatedById(null);
+            }
+        }
+
+        return $this;
     }
 }
