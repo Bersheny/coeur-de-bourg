@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Mailer\Mailer;
+use App\Repository\CdbNewsRepository;
 use Symfony\Component\Mailer\Transport;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
@@ -15,9 +16,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class DefaultController extends AbstractController
 {
     #[Route('/', name: 'app_default_index')]
-    public function index()
+    public function index(CdbNewsRepository $cdbNewsRepository)
     {
-        return $this->render('default/index.html.twig');
+        return $this->render('default/index.html.twig', [
+            'cdb_news' => $cdbNewsRepository->findAll(),
+        ]);
     }
 
     public function sendEmail(Request $request, MailerInterface $mailer)

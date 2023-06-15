@@ -32,7 +32,9 @@
 			</div>
 
 			{% if app.user %}
-				<center><a href="{{ path('app_news_new') }}" class="btn btn-primary btn-sm mt-5" style="font-family: Amatic SC; font-size: 28px; font-weight: 700;">Créer une news</a></center>
+				<center>
+					<a href="{{ path('app_news_new') }}" class="btn btn-primary btn-sm mt-5" style="font-family: Amatic SC; font-size: 28px; font-weight: 700;">Créer une news</a>
+				</center>
 			{% endif %}
 
 			<div class="row row-cols-1 row-cols-md-3 g-4 pt-5">
@@ -42,10 +44,16 @@
 							<img src="/uploads/images/{{ cdb_news.image }}" class="card-img-top" alt="1">
 							<div class="card-body">
 								<h5 class="card-title" style="font-family: Amatic SC; font-size: 28px; font-weight: 700;">{{ cdb_news.title }}</h5>
-								<p class="card-text line-clamp text-muted">Du
-									{{ cdb_news.startDate ? cdb_news.startDate|date('Y-m-d') : '' }}
-									au
-									{{ cdb_news.endDate ? cdb_news.endDate|date('Y-m-d') : '' }}</p>
+								{% if cdb_news.startDate and cdb_news.endDate  %}
+									<p class="card-text line-clamp text-muted">Du
+										{{ cdb_news.startDate ? cdb_news.startDate|date('Y-m-d') : '' }}
+										au
+										{{ cdb_news.endDate ? cdb_news.endDate|date('Y-m-d') : '' }}</p>
+								{% elseif cdb_news.startDate %}
+									<p class="card-text line-clamp text-muted">Le
+										{{ cdb_news.startDate ? cdb_news.startDate|date('Y-m-d') : '' }}</p>
+								{% else %}
+								{% endif %}
 								<p class="card-text line-clamp text-muted">{{ cdb_news.description }}</p>
 							</div>
 							<div class="card-footer text-center">

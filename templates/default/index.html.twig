@@ -10,7 +10,7 @@
 		<div class="col-lg-8 mx-auto p-5 py-md-5">
 			<div class="row gx-4 gx-lg-5">
 				<div class="col-lg-7 col-md-6">
-					<div class="mt-5">
+					<div class="mt-5 mb-5">
 						<h1 class="h1 mb-2" style="font-family: Amatic SC; font-weight: 700; color: #46b4b4">Qui sommes-nous ?
 							<img src="images/icons/undraw_heart-fun-blue.svg" width="20rem">
 						</h1>
@@ -77,8 +77,6 @@
 					</div>
 				</div>
 			</div>
-
-
 		</div>
 	</div>
 
@@ -101,44 +99,41 @@
 			</center>
 
 			<div class="row row-cols-1 row-cols-md-3 g-4 pt-5">
-				<div class="col">
-					<div class="card h-100">
-						<img src="images\logos\4.svg" class="card-img-top" alt="1">
-						<div class="card-body">
-							<h5 class="card-title" style="font-family: Amatic SC; font-size: 28px; font-weight: 700;">Logo</h5>
-							<p class="card-text line-clamp text-muted">Du 17/07/2023 au 11/08/2023</p>
-							<p class="card-text line-clamp text-muted">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+				{% set last_three_news = cdb_news|slice(-3)|reverse %}
+
+				{% if last_three_news|length > 0 %}
+					{% for cdb_news in last_three_news %}
+						<div class="col">
+							<div class="card h-100">
+								<img src="/uploads/images/{{ cdb_news.image }}" class="card-img-top" alt="1">
+								<div class="card-body">
+									<h5 class="card-title" style="font-family: Amatic SC; font-size: 28px; font-weight: 700;">{{ cdb_news.title }}</h5>
+									{% if cdb_news.startDate and cdb_news.endDate %}
+										<p class="card-text line-clamp text-muted">Du
+											{{ cdb_news.startDate ? cdb_news.startDate|date('Y-m-d') : '' }}
+											au
+											{{ cdb_news.endDate ? cdb_news.endDate|date('Y-m-d') : '' }}</p>
+									{% elseif cdb_news.startDate %}
+										<p class="card-text line-clamp text-muted">Le
+											{{ cdb_news.startDate ? cdb_news.startDate|date('Y-m-d') : '' }}</p>
+										{% else %}
+									{% endif %}
+									<p class="card-text line-clamp text-muted">{{ cdb_news.description }}</p>
+								</div>
+								<div class="card-footer text-center">
+									<a href="{{ path('app_news_show', {'id': cdb_news.id}) }}" class="btn btn-primary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">EN SAVOIR PLUS</a>
+									{% if app.user %}
+										<a href="{{ path('app_news_edit', {'id': cdb_news.id}) }}" class="btn btn-secondary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">MODIFIER</a>
+										{{ include('news/_delete_form.html.twig') }}
+									{% endif %}
+								</div>
+							</div>
 						</div>
-						<div class="card-footer text-center">
-							<a href="#" class="btn btn-primary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">EN SAVOIR PLUS</a>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card h-100">
-						<img src="images\dsqal.png" class="card-img-top" alt="2">
-						<div class="card-body">
-							<h5 class="card-title" style="font-family: Amatic SC; font-size: 28px; font-weight: 700;">Artiste</h5>
-							<p class="card-text line-clamp text-muted">This is a short card.</p>
-						</div>
-						<div class="card-footer text-center">
-							<a href="#" class="btn btn-primary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">EN SAVOIR PLUS</a>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card h-100">
-						<img src="images\original.png" class="card-img-top" alt="3">
-						<div class="card-body">
-							<h5 class="card-title" style="font-family: Amatic SC; font-size: 28px; font-weight: 700;">Background</h5>
-							<p class="card-text line-clamp text-muted">Le 04/11/2023</p>
-							<p class="card-text line-clamp text-muted">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-						</div>
-						<div class="card-footer text-center">
-							<a href="#" class="btn btn-primary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">EN SAVOIR PLUS</a>
-						</div>
-					</div>
-				</div>
+					{% endfor %}
+				{% else %}
+					<td colspan="9">Il n'y a aucune news !</td>
+				{% endif %}
+
 			</div>
 
 			<div class="col-lg-8 mx-auto mt-5 text-center">
@@ -162,17 +157,19 @@
 
 			<div class="col-lg-8 mx-auto p-5 py-md-5">
 				<div class="mt-5">
-					<h1 class="h1 mb-2 text-center" style="font-family: Amatic SC; font-weight: 700; color: #46b4b4">Boissons
+					<h1 class="h1 mb-2 text-center" style="font-family: Amatic SC; font-weight: 700; color: #46b4b4">Boissons et glaces
 						<img src="images/icons/undraw_coffee-blue.svg" width="30rem">
 					</h1>
 					<center><img src="images/icons/undraw_fun-underline-blue.svg" width="45rem"></center>
 				</div>
 
-				<div class="mt-5">
-					<h1 class="h1 mb-2 text-center" style="font-family: Amatic SC; font-weight: 700; color: #46b4b4">Glaces
-						<img src="images/icons/undraw_ice-cream-blue.svg" width="20rem">
-					</h1>
-					<center><img src="images/icons/undraw_fun-underline-blue.svg" width="45rem"></center>
+				<div class="row row-cols-1 row-cols-md-2 pt-5 justify-content-md-center">
+					<div class="col-lg-4">
+						<img src="images/prices/1.jpg" width="400rem">
+					</div>
+					<div class="col-lg-4">
+						<img src="images/prices/2.jpg" width="400rem">
+					</div>
 				</div>
 			</div>
 
@@ -274,10 +271,10 @@ modalTriggerButton.click();
 
 				{# Message plus sobre que celui du haut mais beaucoup moins visible #}
 				{# {% if app.request.hasPreviousSession() %}
-					{% for flashMessage in app.session.flashbag.get('success') %}
-						<div class="alert alert-success">{{ flashMessage }}</div>
-					{% endfor %}
-				{% endif %} #}
+									{% for flashMessage in app.session.flashbag.get('success') %}
+										<div class="alert alert-success">{{ flashMessage }}</div>
+									{% endfor %}
+								{% endif %} #}
 
 			</div>
 		</div>
