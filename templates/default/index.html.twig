@@ -10,7 +10,7 @@
 		<div class="col-lg-8 mx-auto p-5 py-md-5">
 			<div class="row gx-4 gx-lg-5">
 				<div class="col-lg-7 col-md-6">
-					<div class="mt-5 mb-5">
+					<div class="mt-3 mb-5">
 						<h1 class="h1 mb-2" style="font-family: Amatic SC; font-weight: 700; color: #46b4b4">Qui sommes-nous ?
 							<img src="images/icons/undraw_heart-fun-blue.svg" width="20rem">
 						</h1>
@@ -57,7 +57,7 @@
 								<b style="color: #46b4b4">Lundi au samedi</b><br>
 								07h30 - 12h30<br>
 								17h00 - 19h00<br><br>
-								<b style="color: #46b4b4">Dimanche</b><br>
+								<b style="color: #46b4b4">Dimanche et jours fériés</b><br>
 								07h30 - 12h30
 							</p>
 						</div>
@@ -71,6 +71,9 @@
 									<b style="color: #FF9FAC; font-family: Neucha; font-size: large;">Cœur de Bourg</b>
 									se situe au cœur du village de
 									<b style="color: #46b4b4">Saint-Quentin-de-Caplong</b>
+									<br><br>
+									<b style="color: #46b4b4">Téléphone</b><br>
+									05 57 41 23 60
 								</p>
 							</div>
 						</div>
@@ -156,21 +159,10 @@
 			</div>
 
 			<div class="col-lg-8 mx-auto p-5 py-md-5">
-				<div class="mt-5">
-					<h1 class="h1 mb-2 text-center" style="font-family: Amatic SC; font-weight: 700; color: #46b4b4">Boissons et glaces
-						<img src="images/icons/undraw_coffee-blue.svg" width="30rem">
-					</h1>
-					<center><img src="images/icons/undraw_fun-underline-blue.svg" width="45rem"></center>
-				</div>
-
-				<div class="row row-cols-1 row-cols-md-2 pt-5 justify-content-md-center">
-					<div class="col-lg-4">
-						<img src="images/prices/1.jpg" width="400rem">
-					</div>
-					<div class="col-lg-4">
-						<img src="images/prices/2.jpg" width="400rem">
-					</div>
-				</div>
+				<h1 class="h1 mb-2 text-center" style="font-family: Amatic SC; font-weight: 700; color: #46b4b4">Pèlerins
+					<img src="images/icons/undraw_coffee-blue.svg" width="30rem">
+				</h1>
+				<center><img src="images/icons/undraw_fun-underline-blue.svg" width="45rem"></center>
 			</div>
 
 			{# Séparation entre partie 3 et partie 4 #}
@@ -268,14 +260,6 @@ modalTriggerButton.click();
 
 					{% endfor %}
 				{% endif %}
-
-				{# Message plus sobre que celui du haut mais beaucoup moins visible #}
-				{# {% if app.request.hasPreviousSession() %}
-									{% for flashMessage in app.session.flashbag.get('success') %}
-										<div class="alert alert-success">{{ flashMessage }}</div>
-									{% endfor %}
-								{% endif %} #}
-
 			</div>
 		</div>
 	</div>
