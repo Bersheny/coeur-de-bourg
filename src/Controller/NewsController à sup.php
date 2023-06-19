@@ -48,7 +48,7 @@ class NewsController extends AbstractController
             return $this->redirectToRoute('app_news_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('news/new.html.twig', [
+        return $this->render('news/new.html.twig', [
             'tbl_news' => $tblNews,
             'form' => $form,
         ]);
@@ -83,7 +83,7 @@ class NewsController extends AbstractController
             return $this->redirectToRoute('app_news_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('news/edit.html.twig', [
+        return $this->render('news/edit.html.twig', [
             'tbl_news' => $tblNews,
             'form' => $form,
         ]);

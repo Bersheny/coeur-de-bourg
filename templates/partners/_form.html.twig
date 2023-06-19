@@ -1,7 +1,6 @@
 {# {{ form_start(form) }}
-{{ form_widget(form) }}
-<button class="btn btn-primary btn-sm mt-2" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">{{ button_label|default('Créer') }}</button>
-<a class="btn btn-secondary btn-sm mt-2" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;" href="{{ path('app_news_index') }}">Revenir à la liste</a>
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }} #}
 
 {{ form_start(form) }}
@@ -15,8 +14,8 @@
 }) }}
 	</div>
 	<div>
-		{{ form_row(form.description, { 
-    'label': 'Description', 
+		{{ form_row(form.website_link, { 
+    'label': 'Lien du site Web', 
     'attr': { 'class': 'form-control mb-4', 'id': 'roles', 'name': '_roles', 'aria-label': 'roles' }, 
     'label_attr': {'class': 'form-label text-black'}, 
     'separator': '<br><br>' 
@@ -36,42 +35,22 @@
 
 <div class="row row-cols-1 row-cols-md-2">
 	<div class="col">
-		{{ form_row(form.start_date, { 
-    'label': 'Date de début', 
-    'attr': { 'class': 'form-control mb-4', 'id': 'roles', 'name': '_roles', 'aria-label': 'roles' }, 
-    'label_attr': {'class': 'form-label text-black'}, 
-    'required': false, 
-    'separator': '<br><br>' 
-}) }}
-	</div>
-	<div class="col">
-		{{ form_row(form.end_date, { 
-    'label': 'Date de fin', 
-    'attr': { 'class': 'form-control mb-4', 'id': 'roles', 'name': '_roles', 'aria-label': 'roles' }, 
-    'label_attr': {'class': 'form-label text-black'}, 
-    'required': false, 
-    'separator': '<br><br>' 
-}) }}
-	</div>
-</div>
-
-<div class="row row-cols-1 row-cols-md-2">
-	<div class="col">
 		{{ form_row(form.image, { 
     'label': 'Image', 
     'attr': { 'class': 'form-control mb-4', 'id': 'roles', 'name': '_roles', 'aria-label': 'roles' }, 
     'label_attr': {'class': 'form-label text-black'},
+    'required': false, 
     'separator': '<br><br>' 
 }) }}
 	</div>
 	<div class="col mb-4">
 		{% if cdb_partners.image %}
-			<center><img style="max-width: 15em; width: auto;" src="{{ asset('uploads/images/' ~ cdb_news.image) }}"></center>
+			<center><img style="max-width: 15em; width: auto;" src="{{ asset('uploads/images/' ~ cdb_partners.image) }}"></center>
 		{% endif %}
 	</div>
 </div>
 
 <button class="btn btn-primary btn-sm mt-2" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">{{ button_label|default('Créer') }}</button>
-<a class="btn btn-secondary btn-sm mt-2" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;" href="{{ path('app_news_index') }}">Revenir à la liste</a>
+<a class="btn btn-secondary btn-sm mt-2" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;" href="{{ path('app_partners_index') }}">Revenir à la liste</a>
 {{ form_end(form) }}
 

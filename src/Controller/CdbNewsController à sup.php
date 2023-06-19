@@ -34,7 +34,7 @@ class CdbNewsController extends AbstractController
             return $this->redirectToRoute('app_cdb_news_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('cdb_news/new.html.twig', [
+        return $this->render('cdb_news/new.html.twig', [
             'cdb_news' => $cdbNews,
             'form' => $form,
         ]);
@@ -60,7 +60,7 @@ class CdbNewsController extends AbstractController
             return $this->redirectToRoute('app_cdb_news_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('cdb_news/edit.html.twig', [
+        return $this->render('cdb_news/edit.html.twig', [
             'cdb_news' => $cdbNews,
             'form' => $form,
         ]);

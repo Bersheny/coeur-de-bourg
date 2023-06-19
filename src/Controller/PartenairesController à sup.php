@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PartenairesController extends AbstractController
 {
-    #[Route('/partenaires', name: 'app_partenaires_index')]
+    #[Route('/partenairesCOPY', name: 'app_partenaires_index')]
     public function index()
     {
         return $this->render('partenaires/index.html.twig');
