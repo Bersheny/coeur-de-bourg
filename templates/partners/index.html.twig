@@ -48,91 +48,125 @@
 								{% if cdb_partners.image %}
 									<div class="col-md-5" style="padding-top: 10rem; padding-bottom: 10rem; background: url('/uploads/images/{{ cdb_partners.image }}');background-position: center; background-repeat: no-repeat; background-size: contain;"></div>
 								{% endif %}
-								<div class="col-md-7">
-									<div class="card-body">
-										<h5 class="card-title">{{ cdb_partners.title }}</h5>
-										<p class="card-text">{{ cdb_partners.content|raw }}</p>
-										{% if cdb_partners.websiteLink %}
-											<p class="card-text">
-												<a class="text-muted" href="{{ cdb_partners.websiteLink }}" target="_blank">{{ cdb_partners.websiteLink }}</a>
-											</p>
+								{% if not cdb_partners.image %}
+									<div class="col-md-12">
+									{% else %}
+										<div class="col-md-7">
 										{% endif %}
+										<div class="card-body">
+											<h5 class="card-title {% if not cdb_partners.image %} text-center {% endif %}" style="font-family: Amatic SC; font-size: 32px; font-weight: 700;">{{ cdb_partners.title }}</h5>
+											{% if app.user %}
+												{% if cdb_partners.createdBy %}
+													<p class="text-muted {% if not cdb_partners.image %} text-center {% endif %}">Crée par "{{ cdb_partners.createdBy.email }}"
+													{% endif %}
+													{% if cdb_partners.createdAt %}
+														le
+														{{ cdb_partners.createdAt.format('d/m/Y \à H:i') }}</p>
+												{% endif %}
+											{% endif %}
+											{% if cdb_partners.websiteLink %}
+												{% if not cdb_partners.image %}
+													<center>
+													{% endif %}
+													<a href="{{ cdb_partners.websiteLink }}" class="btn btn-primary btn-sm {% if not cdb_partners.image %} justify-content-center {% endif %}" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;" target="_blank">Site Web</a>
+													{% if not cdb_partners.image %}
+													</center>
+												{% endif %}
+											{% endif %}
+											<p class="card-text">{{ cdb_partners.content|raw }}</p>
+										</div>
 									</div>
 								</div>
-							</div>
-							{% if app.user %}
-								<div class="card-footer text-center">
-									<a href="{{ path('app_partners_edit', {'id': cdb_partners.id}) }}" class="btn btn-secondary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">MODIFIER</a>
-									{{ include('partners/_delete_form.html.twig') }}
-								</div>
-							{% endif %}
-						</div>
-						{% set alignement = 'droite' %}
-					{% elseif alignement == 'droite' %}
-						<div class="card mb-3">
-							<div class="row g-0">
-								<div class="col-md-7 order-2 order-sm-2 order-md-1 order-lg-1">
-									<div class="card-body">
-										<h5 class="card-title">{{ cdb_partners.title }}</h5>
-										<p class="card-text">{{ cdb_partners.content|raw }}</p>
-										{% if cdb_partners.websiteLink %}
-											<p class="card-text">
-												<a class="text-muted" href="{{ cdb_partners.websiteLink }}" target="_blank">{{ cdb_partners.websiteLink }}</a>
-											</p>
-										{% endif %}
+								{% if app.user %}
+									<div class="card-footer text-center">
+										<a href="{{ path('app_partners_edit', {'id': cdb_partners.id}) }}" class="btn btn-secondary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">MODIFIER</a>
+										{{ include('partners/_delete_form.html.twig') }}
 									</div>
-								</div>
-								{% if cdb_partners.image %}
-									<div class="col-md-5 order-1 order-sm-1 order-md-2 order-lg-2" style="padding-top: 10rem; padding-bottom: 10rem; background: url('/uploads/images/{{ cdb_partners.image }}');background-position: center; background-repeat: no-repeat; background-size: contain;"></div>
 								{% endif %}
 							</div>
-							{% if app.user %}
-								<div class="card-footer text-center">
-									<a href="{{ path('app_partners_edit', {'id': cdb_partners.id}) }}" class="btn btn-secondary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">MODIFIER</a>
-									{{ include('partners/_delete_form.html.twig') }}
+							{% if cdb_partners.image %}
+								{% set alignement = 'droite' %}
+							{% endif %}	
+						{% elseif alignement == 'droite' %}
+							<div class="card mb-3">
+								<div class="row g-0">
+									{% if not cdb_partners.image %}
+										<div class="col-md-12 order-2 order-sm-2 order-md-1 order-lg-1">
+										{% else %}
+											<div class="col-md-7 order-2 order-sm-2 order-md-1 order-lg-1">
+											{% endif %}
+											<div class="card-body">
+												<h5 class="card-title {% if not cdb_partners.image %} text-center {% endif %}" style="font-family: Amatic SC; font-size: 32px; font-weight: 700;">{{ cdb_partners.title }}</h5>
+												{% if app.user %}
+													<p class="text-muted {% if not cdb_partners.image %} text-center {% endif %}">Crée par "{{ cdb_partners.createdBy.email }}" le
+														{{ cdb_partners.createdAt.format('d/m/Y \à H:i') }}</p>
+												{% endif %}
+												{% if cdb_partners.websiteLink %}
+													{% if not cdb_partners.image %}
+														<center>
+														{% endif %}
+														<a href="{{ cdb_partners.websiteLink }}" class="btn btn-primary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;" target="_blank">Site Web</a>
+														{% if not cdb_partners.image %}
+														</center>
+													{% endif %}
+												{% endif %}
+												<p class="card-text">{{ cdb_partners.content|raw }}</p>
+											</div>
+										</div>
+										{% if cdb_partners.image %}
+											<div class="col-md-5 order-1 order-sm-1 order-md-2 order-lg-2" style="padding-top: 10rem; padding-bottom: 10rem; background: url('/uploads/images/{{ cdb_partners.image }}');background-position: center; background-repeat: no-repeat; background-size: contain;"></div>
+										{% endif %}
+									</div>
+									{% if app.user %}
+										<div class="card-footer text-center">
+											<a href="{{ path('app_partners_edit', {'id': cdb_partners.id}) }}" class="btn btn-secondary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">MODIFIER</a>
+											{{ include('partners/_delete_form.html.twig') }}
+										</div>
+									{% endif %}
 								</div>
+								{% if cdb_partners.image %}
+									{% set alignement = 'gauche' %}
+								{% endif %}
 							{% endif %}
-						</div>
-						{% set alignement = 'gauche' %}
-					{% endif %}
 
-			{% else %}
-				<td colspan="9">Il n'y a aucun partenaire !</td>
-			{% endfor %}
-		</div>
-		{# <table class="table">
-		                <thead>
-		                    <tr>
-		                        <th>Id</th>
-		                        <th>Title</th>
-		                        <th>Content</th>
-		                        <th>Image</th>
-		                        <th>Website_link</th>
-		                        <th>Created_at</th>
-		                        <th>actions</th>
-		                    </tr>
-		                </thead>
-		                <tbody>
-		                    {% for cdb_partner in cdb_partners %}
-		                        <tr>
-		                            <td>{{ cdb_partners.id }}</td>
-		                            <td>{{ cdb_partners.title }}</td>
-		                            <td>{{ cdb_partners.content }}</td>
-		                            <td>{{ cdb_partners.image }}</td>
-		                            <td>{{ cdb_partners.websiteLink }}</td>
-		                            <td>{{ cdb_partners.createdAt ? cdb_partners.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-		                            <td>
-		                                <a href="{{ path('app_partners_show', {'id': cdb_partners.id}) }}">show</a>
-		                                <a href="{{ path('app_partners_edit', {'id': cdb_partners.id}) }}">edit</a>
-		                            </td>
-		                        </tr>
-		                    {% else %}
-		                        <tr>
-		                            <td colspan="7">no records found</td>
-		                        </tr>
-		                    {% endfor %}
-		                </tbody>
-		            </table> #}
-	</div>
-</div>{% endblock %}
+						{% else %}
+							<td colspan="9">Il n'y a aucun partenaire !</td>
+						{% endfor %}
+					</div>
+					{# <table class="table">
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Title</th>
+									<th>Content</th>
+									<th>Image</th>
+									<th>Website_link</th>
+									<th>Created_at</th>
+									<th>actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for cdb_partner in cdb_partners %}
+									<tr>
+										<td>{{ cdb_partners.id }}</td>
+										<td>{{ cdb_partners.title }}</td>
+										<td>{{ cdb_partners.content }}</td>
+										<td>{{ cdb_partners.image }}</td>
+										<td>{{ cdb_partners.websiteLink }}</td>
+										<td>{{ cdb_partners.createdAt ? cdb_partners.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+										<td>
+											<a href="{{ path('app_partners_show', {'id': cdb_partners.id}) }}">show</a>
+											<a href="{{ path('app_partners_edit', {'id': cdb_partners.id}) }}">edit</a>
+										</td>
+									</tr>
+								{% else %}
+									<tr>
+										<td colspan="7">no records found</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table> #}
+				</div>
+			</div>
+		{% endblock %}
 

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use DateTimeZone;
 use DateTimeImmutable;
 use App\Entity\CdbNews;
 use App\Form\CdbNewsType;
@@ -32,8 +33,9 @@ class NewsController extends AbstractController
         }
 
         $cdbNews = new CdbNews();
-        $cdbNews->setCreatedAt(new DateTimeImmutable());
-        $cdbNews->setCreatedById($this->getUser());
+        $timeZone = new DateTimeZone('Europe/Paris');
+        $cdbNews->setCreatedAt(new DateTimeImmutable('now', $timeZone)); 
+        $cdbNews->setCreatedBy($this->getUser());
 
         $form = $this->createForm(CdbNewsType::class, $cdbNews);
         $form->handleRequest($request);

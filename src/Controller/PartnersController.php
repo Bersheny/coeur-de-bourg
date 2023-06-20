@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use DateTimeZone;
 use DateTimeImmutable;
 use App\Entity\CdbPartners;
 use App\Form\CdbPartnersType;
@@ -33,8 +34,9 @@ class PartnersController extends AbstractController
         }
 
         $cdbPartner = new CdbPartners();
-        $cdbPartner->setCreatedAt(new DateTimeImmutable());
-        $cdbPartner->setCreatedById($this->getUser());
+        $timeZone = new DateTimeZone('Europe/Paris');
+        $cdbPartner->setCreatedAt(new DateTimeImmutable('now', $timeZone));
+        $cdbPartner->setCreatedBy($this->getUser());
 
         $form = $this->createForm(CdbPartnersType::class, $cdbPartner);
         $form->handleRequest($request);

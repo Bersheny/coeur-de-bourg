@@ -36,10 +36,10 @@ class CdbUsers implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $password = null;
 
-    #[ORM\OneToMany(mappedBy: 'created_by_id', targetEntity: CdbNews::class)]
+    #[ORM\OneToMany(mappedBy: 'created_by', targetEntity: CdbNews::class)]
     private Collection $cdbNews;
 
-    #[ORM\OneToMany(mappedBy: 'created_by_id', targetEntity: CdbPartners::class)]
+    #[ORM\OneToMany(mappedBy: 'created_by', targetEntity: CdbPartners::class)]
     private Collection $cdbPartners;
 
     public function __construct()
@@ -151,7 +151,7 @@ class CdbUsers implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->cdbNews->contains($cdbNews)) {
             $this->cdbNews->add($cdbNews);
-            $cdbNews->setCreatedById($this);
+            $cdbNews->setCreatedBy($this);
         }
 
         return $this;
@@ -161,8 +161,8 @@ class CdbUsers implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->cdbNews->removeElement($cdbNews)) {
             // set the owning side to null (unless already changed)
-            if ($cdbNews->getCreatedById() === $this) {
-                $cdbNews->setCreatedById(null);
+            if ($cdbNews->getCreatedBy() === $this) {
+                $cdbNews->setCreatedBy(null);
             }
         }
 
@@ -181,7 +181,7 @@ class CdbUsers implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->cdbPartners->contains($cdbPartner)) {
             $this->cdbPartners->add($cdbPartner);
-            $cdbPartner->setCreatedById($this);
+            $cdbPartner->setCreatedBy($this);
         }
 
         return $this;
@@ -191,8 +191,8 @@ class CdbUsers implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->cdbPartners->removeElement($cdbPartner)) {
             // set the owning side to null (unless already changed)
-            if ($cdbPartner->getCreatedById() === $this) {
-                $cdbPartner->setCreatedById(null);
+            if ($cdbPartner->getCreatedBy() === $this) {
+                $cdbPartner->setCreatedBy(null);
             }
         }
 

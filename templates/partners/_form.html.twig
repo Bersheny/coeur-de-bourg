@@ -1,14 +1,9 @@
-{# {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }} #}
-
 {{ form_start(form) }}
 <div class="row">
 	<div>
 		{{ form_row(form.title, { 
     'label': 'Titre', 
-    'attr': { 'class': 'form-control mb-4', 'id': 'roles', 'name': '_roles', 'aria-label': 'roles' }, 
+    'attr': { 'class': 'form-control mb-4', 'id': 'title', 'name': '_title', 'aria-label': 'title' }, 
     'label_attr': {'class': 'form-label text-black'}, 
     'separator': '<br><br>' 
 }) }}
@@ -16,7 +11,7 @@
 	<div>
 		{{ form_row(form.website_link, { 
     'label': 'Lien du site Web', 
-    'attr': { 'class': 'form-control mb-4', 'id': 'roles', 'name': '_roles', 'aria-label': 'roles' }, 
+    'attr': { 'class': 'form-control mb-4', 'id': 'websiteLink', 'name': '_websiteLink', 'aria-label': 'websiteLink' }, 
     'label_attr': {'class': 'form-label text-black'}, 
     'separator': '<br><br>' 
 }) }}
@@ -24,7 +19,7 @@
 	<div>
 		{{ form_row(form.content, { 
     'label': 'Contenu', 
-    'attr': { 'class': 'form-control', 'id': 'roles', 'name': '_roles', 'aria-label': 'roles' }, 
+    'attr': { 'class': 'form-control', 'id': 'content', 'name': '_content', 'aria-label': 'content', 'required': 'required' }, 
     'label_attr': {'class': 'form-label text-black'}, 
     'separator': '<br><br>' 
 }) }}
@@ -37,7 +32,7 @@
 	<div class="col">
 		{{ form_row(form.image, { 
     'label': 'Image', 
-    'attr': { 'class': 'form-control mb-4', 'id': 'roles', 'name': '_roles', 'aria-label': 'roles' }, 
+    'attr': { 'class': 'form-control mb-4', 'id': 'image', 'name': '_image', 'aria-label': 'image' }, 
     'label_attr': {'class': 'form-label text-black'},
     'required': false, 
     'separator': '<br><br>' 
@@ -53,4 +48,3 @@
 <button class="btn btn-primary btn-sm mt-2" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">{{ button_label|default('Créer') }}</button>
 <a class="btn btn-secondary btn-sm mt-2" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;" href="{{ path('app_partners_index') }}">Revenir à la liste</a>
 {{ form_end(form) }}
-

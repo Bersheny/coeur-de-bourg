@@ -30,7 +30,7 @@ class CdbPartners
     private ?\DateTimeImmutable $created_at = null;
 
     #[ORM\ManyToOne(inversedBy: 'cdbPartners')]
-    private ?CdbUsers $created_by_id = null;
+    private ?CdbUsers $created_by = null;
 
     public function getId(): ?int
     {
@@ -97,14 +97,14 @@ class CdbPartners
         return $this;
     }
 
-    public function getCreatedById(): ?CdbUsers
+    public function getCreatedBy(): ?CdbUsers
     {
-        return $this->created_by_id;
+        return $this->created_by;
     }
 
-    public function setCreatedById(?CdbUsers $created_by_id): self
+    public function setCreatedBy(?CdbUsers $created_by): self
     {
-        $this->created_by_id = $created_by_id;
+        $this->created_by = $created_by;
 
         return $this;
     }

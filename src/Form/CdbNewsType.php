@@ -52,7 +52,7 @@ class CdbNewsType extends AbstractType
             'format' => 'yyyy-MM-dd',
             'input' => 'datetime_immutable',
         ]);
-        // $builder->add('created_by_id');
+        // $builder->add('created_by');
         // $builder->add('created_at');
         ;
     }
