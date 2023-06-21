@@ -22,10 +22,8 @@ class RegistrationController extends AbstractController
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
+        // Vérifie si l'utilisateur a le rôle ROLE_ADMIN, sinon l'accès est refusé
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
-        // if (!$this->isGranted('ROLE_ADMIN')) {
-        //     $this->denyAccessUnlessGranted('ROLE_MODERATOR');
-        // }
 
         $user = new CdbUsers();
         $form = $this->createForm(RegistrationFormType::class, $user);

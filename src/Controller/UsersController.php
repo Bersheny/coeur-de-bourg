@@ -17,11 +17,11 @@ class UsersController extends AbstractController
     #[Route('/', name: 'app_users_index', methods: ['GET'])]
     public function index(CdbUsersRepository $cdbUsersRepository): Response
     {
-        // Check if the user has the ROLE_ADMIN role
+        // Vérifie si l'utilisateur a le rôle ROLE_ADMIN
         if (!$this->isGranted('ROLE_ADMIN')) {
-            // If not, check if the user has the ROLE_MODERATOR role
+           // Si non, vérifie si l'utilisateur a le rôle ROLE_MODERATOR
             if (!$this->isGranted('ROLE_MODERATOR')) {
-                // If the user doesn't have either role, deny access
+                // Si l'utilisateur n'a aucun rôle, refuser l'accès
                 throw new AccessDeniedException('Vous n\'avez pas accès à cette page');
             }
         }
@@ -80,9 +80,6 @@ class UsersController extends AbstractController
     public function delete(Request $request, CdbUsers $cdbUser, CdbUsersRepository $cdbUsersRepository): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
-        // if (!$this->isGranted('ROLE_ADMIN')) {
-        //     $this->denyAccessUnlessGranted('ROLE_MODERATOR');
-        // }
 
         if ($this->isCsrfTokenValid('delete'.$cdbUser->getId(), $request->request->get('_token'))) {
             $cdbUsersRepository->remove($cdbUser, true);

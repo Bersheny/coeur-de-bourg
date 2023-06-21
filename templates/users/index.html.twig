@@ -31,38 +31,43 @@
 				<img src="/images/icons/undraw_fun-underline-blue.svg" width="45rem">
 			</div>
 
-    <table class="table mt-5">
-        <thead>
-            <tr>
-                {# <th>Id</th> #}
-                <th>E-mail</th>
-                {# <th>Role</th> #}
-                <th>Prénom</th>
-                <th>Nom</th>
-                {% if 'ROLE_ADMIN' in app.user.roles %}
-                <th>Action</th>
-                {% endif %}
-            </tr>
-        </thead>
-        <tbody>
-        {% for cdb_user in cdb_users %}
-            <tr>
-                {# <td>{{ cdb_user.id }}</td> #}
-                <td>{{ cdb_user.email }}</td>
-                {# <td>{{ cdb_user.role ? cdb_user.role|json_encode : '' }}</td> #}
-                <td>{{ cdb_user.firstName }}</td>
-                <td>{{ cdb_user.lastName }}</td>
-                {% if 'ROLE_ADMIN' in app.user.roles %}
-                <td>
-                    {{ include('users/_delete_form.html.twig') }}
-                </td>
-                {% endif %}
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">Il n'y a aucun utilisateur !</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+			<div class="table-responsive">
+				<table class="table table-striped mt-5">
+					<thead>
+						<tr>
+							{# <th>Id</th> #}
+							<th>E-mail</th>
+							{# <th>Role</th> #}
+							<th>Prénom</th>
+							<th>Nom</th>
+							{% if 'ROLE_ADMIN' in app.user.roles %}
+								<th>Action</th>
+							{% endif %}
+						</tr>
+					</thead>
+					<tbody>
+						{% for cdb_user in cdb_users %}
+							<tr>
+								{# <td>{{ cdb_user.id }}</td> #}
+								<td>{{ cdb_user.email }}</td>
+								{# <td>{{ cdb_user.role ? cdb_user.role|json_encode : '' }}</td> #}
+								<td>{{ cdb_user.firstName }}</td>
+								<td>{{ cdb_user.lastName }}</td>
+								{% if 'ROLE_ADMIN' in app.user.roles %}
+									<td>
+										{{ include('users/_delete_form.html.twig') }}
+									</td>
+								{% endif %}
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="7">Il n'y a aucun utilisateur !</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 {% endblock %}
+
