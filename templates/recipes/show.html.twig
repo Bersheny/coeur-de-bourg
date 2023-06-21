@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CdbRecipes{% endblock %}
+
+{% block body %}
+    <h1>CdbRecipes</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cdb_recipe.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ cdb_recipe.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ cdb_recipe.description }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ cdb_recipe.content }}</td>
+            </tr>
+            <tr>
+                <th>Time_hours</th>
+                <td>{{ cdb_recipe.timeHours }}</td>
+            </tr>
+            <tr>
+                <th>Time_minutes</th>
+                <td>{{ cdb_recipe.timeMinutes }}</td>
+            </tr>
+            <tr>
+                <th>Difficulty</th>
+                <td>{{ cdb_recipe.difficulty }}</td>
+            </tr>
+            <tr>
+                <th>Pricing</th>
+                <td>{{ cdb_recipe.pricing }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ cdb_recipe.createdAt ? cdb_recipe.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ cdb_recipe.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_recipes_index') }}">back to list</a>
+
+    <a href="{{ path('app_recipes_edit', {'id': cdb_recipe.id}) }}">edit</a>
+
+    {{ include('recipes/_delete_form.html.twig') }}
+{% endblock %}

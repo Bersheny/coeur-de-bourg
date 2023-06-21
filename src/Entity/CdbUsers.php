@@ -42,10 +42,14 @@ class CdbUsers implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'created_by', targetEntity: CdbPartners::class)]
     private Collection $cdbPartners;
 
+    #[ORM\OneToMany(mappedBy: 'created_by', targetEntity: CdbRecipes::class)]
+    private Collection $cdbRecipes;
+
     public function __construct()
     {
         $this->cdbNews = new ArrayCollection();
         $this->cdbPartners = new ArrayCollection();
+        $this->cdbRecipes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -193,6 +197,36 @@ class CdbUsers implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($cdbPartner->getCreatedBy() === $this) {
                 $cdbPartner->setCreatedBy(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CdbRecipes>
+     */
+    public function getCdbRecipes(): Collection
+    {
+        return $this->cdbRecipes;
+    }
+
+    public function addCdbRecipe(CdbRecipes $cdbRecipe): static
+    {
+        if (!$this->cdbRecipes->contains($cdbRecipe)) {
+            $this->cdbRecipes->add($cdbRecipe);
+            $cdbRecipe->setCreatedBy($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCdbRecipe(CdbRecipes $cdbRecipe): static
+    {
+        if ($this->cdbRecipes->removeElement($cdbRecipe)) {
+            // set the owning side to null (unless already changed)
+            if ($cdbRecipe->getCreatedBy() === $this) {
+                $cdbRecipe->setCreatedBy(null);
             }
         }
 

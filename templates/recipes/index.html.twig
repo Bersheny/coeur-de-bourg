@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CdbRecipes index{% endblock %}
+
+{% block body %}
+    <h1>CdbRecipes index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Content</th>
+                <th>Time_hours</th>
+                <th>Time_minutes</th>
+                <th>Difficulty</th>
+                <th>Pricing</th>
+                <th>Created_at</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cdb_recipe in cdb_recipes %}
+            <tr>
+                <td>{{ cdb_recipe.id }}</td>
+                <td>{{ cdb_recipe.title }}</td>
+                <td>{{ cdb_recipe.description }}</td>
+                <td>{{ cdb_recipe.content }}</td>
+                <td>{{ cdb_recipe.timeHours }}</td>
+                <td>{{ cdb_recipe.timeMinutes }}</td>
+                <td>{{ cdb_recipe.difficulty }}</td>
+                <td>{{ cdb_recipe.pricing }}</td>
+                <td>{{ cdb_recipe.createdAt ? cdb_recipe.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ cdb_recipe.image }}</td>
+                <td>
+                    <a href="{{ path('app_recipes_show', {'id': cdb_recipe.id}) }}">show</a>
+                    <a href="{{ path('app_recipes_edit', {'id': cdb_recipe.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_recipes_new') }}">Create new</a>
+{% endblock %}
