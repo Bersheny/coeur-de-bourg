@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 #[Route('/partenaires')]
 class PartnersController extends AbstractController
@@ -28,9 +29,13 @@ class PartnersController extends AbstractController
 
     public function new(Request $request, ImageUploaderHelper $imageUploaderHelper, CdbPartnersRepository $cdbPartnersRepository): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        // Check if the user has the ROLE_ADMIN role
         if (!$this->isGranted('ROLE_ADMIN')) {
-            $this->denyAccessUnlessGranted('ROLE_MODERATOR');
+            // If not, check if the user has the ROLE_MODERATOR role
+            if (!$this->isGranted('ROLE_MODERATOR')) {
+                // If the user doesn't have either role, deny access
+                throw new AccessDeniedException('Vous n\'avez pas accès à cette page');
+            }
         }
 
         $cdbPartner = new CdbPartners();
@@ -58,21 +63,25 @@ class PartnersController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_partners_show', methods: ['GET'])]
-    public function show(CdbPartners $cdbPartner): Response
-    {
-        return $this->render('partners/show.html.twig', [
-            'cdb_partners' => $cdbPartner,
-        ]);
-    }
+    // #[Route('/{id}', name: 'app_partners_show', methods: ['GET'])]
+    // public function show(CdbPartners $cdbPartner): Response
+    // {
+    //     return $this->render('partners/show.html.twig', [
+    //         'cdb_partners' => $cdbPartner,
+    //     ]);
+    // }
 
     #[Route('/{id}/edit', name: 'app_partners_edit', methods: ['GET', 'POST'])]
 
     public function edit(Request $request, ImageUploaderHelper $imageUploaderHelper, CdbPartners $cdbPartner, CdbPartnersRepository $cdbPartnersRepository): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        // Check if the user has the ROLE_ADMIN role
         if (!$this->isGranted('ROLE_ADMIN')) {
-            $this->denyAccessUnlessGranted('ROLE_MODERATOR');
+            // If not, check if the user has the ROLE_MODERATOR role
+            if (!$this->isGranted('ROLE_MODERATOR')) {
+                // If the user doesn't have either role, deny access
+                throw new AccessDeniedException('Vous n\'avez pas accès à cette page');
+            }
         }
 
         $form = $this->createForm(CdbPartnersType::class, $cdbPartner);

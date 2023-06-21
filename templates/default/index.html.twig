@@ -111,6 +111,17 @@
 								<img src="/uploads/images/{{ cdb_news.image }}" class="card-img-top" alt="1">
 								<div class="card-body">
 									<h5 class="card-title" style="font-family: Amatic SC; font-size: 28px; font-weight: 700;">{{ cdb_news.title }}</h5>
+									{% if app.user %}
+										<p class="text-muted">
+											{% if cdb_news.createdBy %}Créée par "{{ cdb_news.createdBy.email }}"
+											{% endif %}
+											{% if cdb_news.createdAt %}
+												{% if not cdb_news.createdBy %}Créée
+												{% endif %}
+												le
+												{{ cdb_news.createdAt.format('d/m/Y \à H:i') }}</p>
+										{% endif %}
+									{% endif %}
 									{% if cdb_news.startDate and cdb_news.endDate %}
 										<p class="card-text line-clamp text-muted">Du
 											{{ cdb_news.startDate ? cdb_news.startDate|date('Y-m-d') : '' }}

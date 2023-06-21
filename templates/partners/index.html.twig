@@ -56,10 +56,13 @@
 										<div class="card-body">
 											<h5 class="card-title {% if not cdb_partners.image %} text-center {% endif %}" style="font-family: Amatic SC; font-size: 32px; font-weight: 700;">{{ cdb_partners.title }}</h5>
 											{% if app.user %}
-												{% if cdb_partners.createdBy %}
-													<p class="text-muted {% if not cdb_partners.image %} text-center {% endif %}">Crée par "{{ cdb_partners.createdBy.email }}"
+												<p class="text-muted {% if not cdb_partners.image %} text-center {% endif %}">
+													{% if cdb_partners.createdBy %}
+														Crée par "{{ cdb_partners.createdBy.email }}"
 													{% endif %}
 													{% if cdb_partners.createdAt %}
+														{% if not cdb_partners.createdBy %}Crée
+														{% endif %}
 														le
 														{{ cdb_partners.createdAt.format('d/m/Y \à H:i') }}</p>
 												{% endif %}
@@ -86,7 +89,7 @@
 							</div>
 							{% if cdb_partners.image %}
 								{% set alignement = 'droite' %}
-							{% endif %}	
+							{% endif %}
 						{% elseif alignement == 'droite' %}
 							<div class="card mb-3">
 								<div class="row g-0">
@@ -98,8 +101,16 @@
 											<div class="card-body">
 												<h5 class="card-title {% if not cdb_partners.image %} text-center {% endif %}" style="font-family: Amatic SC; font-size: 32px; font-weight: 700;">{{ cdb_partners.title }}</h5>
 												{% if app.user %}
-													<p class="text-muted {% if not cdb_partners.image %} text-center {% endif %}">Crée par "{{ cdb_partners.createdBy.email }}" le
-														{{ cdb_partners.createdAt.format('d/m/Y \à H:i') }}</p>
+													<p class="text-muted {% if not cdb_partners.image %} text-center {% endif %}">
+														{% if cdb_partners.createdBy %}
+															Crée par "{{ cdb_partners.createdBy.email }}"
+														{% endif %}
+														{% if cdb_partners.createdAt %}
+															{% if not cdb_partners.createdBy %}Crée
+															{% endif %}
+															le
+															{{ cdb_partners.createdAt.format('d/m/Y \à H:i') }}</p>
+													{% endif %}
 												{% endif %}
 												{% if cdb_partners.websiteLink %}
 													{% if not cdb_partners.image %}
@@ -133,39 +144,6 @@
 							<td colspan="9">Il n'y a aucun partenaire !</td>
 						{% endfor %}
 					</div>
-					{# <table class="table">
-							<thead>
-								<tr>
-									<th>Id</th>
-									<th>Title</th>
-									<th>Content</th>
-									<th>Image</th>
-									<th>Website_link</th>
-									<th>Created_at</th>
-									<th>actions</th>
-								</tr>
-							</thead>
-							<tbody>
-								{% for cdb_partner in cdb_partners %}
-									<tr>
-										<td>{{ cdb_partners.id }}</td>
-										<td>{{ cdb_partners.title }}</td>
-										<td>{{ cdb_partners.content }}</td>
-										<td>{{ cdb_partners.image }}</td>
-										<td>{{ cdb_partners.websiteLink }}</td>
-										<td>{{ cdb_partners.createdAt ? cdb_partners.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-										<td>
-											<a href="{{ path('app_partners_show', {'id': cdb_partners.id}) }}">show</a>
-											<a href="{{ path('app_partners_edit', {'id': cdb_partners.id}) }}">edit</a>
-										</td>
-									</tr>
-								{% else %}
-									<tr>
-										<td colspan="7">no records found</td>
-									</tr>
-								{% endfor %}
-							</tbody>
-						</table> #}
 				</div>
 			</div>
 		{% endblock %}
