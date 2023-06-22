@@ -3,23 +3,34 @@
 namespace App\Controller;
 
 use Symfony\Component\Mime\Email;
+use App\Entity\CdbRecipesFeatured;
 use Symfony\Component\Mailer\Mailer;
 use App\Repository\CdbNewsRepository;
 use Symfony\Component\Mailer\Transport;
+use App\Repository\CdbRecipesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\CdbRecipesFeaturedRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class DefaultController extends AbstractController
 {
     #[Route('/', name: 'app_default_index')]
-    public function index(CdbNewsRepository $cdbNewsRepository)
+    public function index(Request $request, CdbNewsRepository $cdbNewsRepository, CdbRecipesFeaturedRepository $cdbRecipesFeaturedRepository, CdbRecipesRepository $cdbRecipesRepository)
     {
+        // Retrieve the featured recipe entity by ID from the repository
+        $featuredRecipe = $cdbRecipesFeaturedRepository->find(1);
+
+        // Retrieve the "featured" value of the featured recipe entity
+        $featuredValue = ($featuredRecipe) ? $featuredRecipe->getFeatured() : false;
+
         return $this->render('default/index.html.twig', [
             'cdb_news' => $cdbNewsRepository->findAll(),
+            'cdb_recipes' => $cdbRecipesRepository->findAll(),
+            'featuredValue' => $featuredValue,
         ]);
     }
 

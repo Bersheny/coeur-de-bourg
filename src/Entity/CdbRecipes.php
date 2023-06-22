@@ -24,6 +24,9 @@ class CdbRecipes
     private ?string $content = null;
 
     #[ORM\Column(nullable: true)]
+    private ?int $time_days = null;
+
+    #[ORM\Column(nullable: true)]
     private ?int $time_hours = null;
 
     #[ORM\Column]
@@ -35,14 +38,14 @@ class CdbRecipes
     #[ORM\Column(length: 255)]
     private ?string $pricing = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $image = null;
+
     #[ORM\Column]
     private ?\DateTimeImmutable $created_at = null;
 
     #[ORM\ManyToOne(inversedBy: 'cdbRecipes')]
     private ?CdbUsers $created_by = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $image = null;
 
     public function getId(): ?int
     {
@@ -165,6 +168,18 @@ class CdbRecipes
     public function setImage(?string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getTimeDays(): ?int
+    {
+        return $this->time_days;
+    }
+
+    public function setTimeDays(?int $time_days): static
+    {
+        $this->time_days = $time_days;
 
         return $this;
     }

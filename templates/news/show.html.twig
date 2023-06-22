@@ -32,6 +32,18 @@
 
 			<center><img src="/uploads/images/{{ cdb_news.image }}" class="mt-5 mb-3" style="max-width: 25em;"></center>
 
+			{% if app.user %}
+				<p class="text-muted text-center">
+					{% if cdb_news.createdBy %}Créée par "{{ cdb_news.createdBy.email }}"
+					{% endif %}
+					{% if cdb_news.createdAt %}
+						{% if not cdb_news.createdBy %}Créée
+						{% endif %}
+						le
+						{{ cdb_news.createdAt.format('d/m/Y \à H:i') }}</p>
+				{% endif %}
+			{% endif %}
+
 			<center>
 				<div class="mb-3" style="max-width: 45em">
 					<i class="text-muted">{{ cdb_news.description }}</i>
@@ -39,15 +51,15 @@
 
 				<div class="mb-5" style="max-width: 45em">
 					{% if cdb_news.startDate and cdb_news.endDate  %}
-				<p class="form-label" style="color: #46b4b4">Du
-					{{ cdb_news.startDate ? cdb_news.startDate|date('Y-m-d') : '' }}
-					au
-					{{ cdb_news.endDate ? cdb_news.endDate|date('Y-m-d') : '' }}</p>
-			{% elseif cdb_news.startDate %}
-				<p class="form-label" style="color: #46b4b4">Le
-					{{ cdb_news.startDate ? cdb_news.startDate|date('Y-m-d') : '' }}</p>
-				{% else %}
-			{% endif %}
+						<p class="form-label" style="color: #46b4b4">Du
+							{{ cdb_news.startDate ? cdb_news.startDate|date('Y-m-d') : '' }}
+							au
+							{{ cdb_news.endDate ? cdb_news.endDate|date('Y-m-d') : '' }}</p>
+					{% elseif cdb_news.startDate %}
+						<p class="form-label" style="color: #46b4b4">Le
+							{{ cdb_news.startDate ? cdb_news.startDate|date('Y-m-d') : '' }}</p>
+						{% else %}
+					{% endif %}
 				</div>
 			</center>
 

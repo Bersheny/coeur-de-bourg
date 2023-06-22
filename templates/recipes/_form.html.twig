@@ -1,4 +1,96 @@
-{{ form_start(form) }}
+{# {{ form_start(form) }}
     {{ form_widget(form) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }} #}
+
+{# {{ form_start(form) }}
+{{ form_widget(form) }}
+<button class="btn btn-primary btn-sm mt-2" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">{{ button_label|default('Créer') }}</button>
+<a class="btn btn-secondary btn-sm mt-2" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;" href="{{ path('app_recipes_index') }}">Revenir à la liste</a>
+{{ form_end(form) }} #}
+
+{{ form_start(form) }}
+<div class="row">
+	<div>
+		{{ form_row(form.title, { 
+    'label': 'Titre', 
+    'attr': { 'class': 'form-control mb-4', 'id': 'title', 'name': '_title', 'aria-label': 'title' }, 
+    'label_attr': {'class': 'form-label text-black'}, 
+    'separator': '<br><br>' 
+}) }}
+	</div>
+	<div>
+		{{ form_row(form.description, { 
+    'label': 'Description', 
+    'attr': { 'class': 'form-control mb-4', 'id': 'description', 'name': '_description', 'aria-label': 'description' }, 
+    'label_attr': {'class': 'form-label text-black'}, 
+    'separator': '<br><br>' 
+}) }}
+	</div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3">
+    <div class="col">
+        {{ form_row(form.time_days) }}
+    </div>
+	<div class="col">
+		{{ form_row(form.time_hours) }}
+	</div>
+	<div class="col">
+		{{ form_row(form.time_minutes) }}
+	</div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2">
+	<div class="col">
+		{{ form_row(form.difficulty, { 
+    'label': 'Difficulté', 
+    'attr': { 'class': 'form-control mb-4', 'id': 'difficulty', 'name': '_difficulty', 'aria-label': 'difficulty' }, 
+    'label_attr': {'class': 'form-label text-black'}, 
+    'required': false, 
+    'separator': '<br><br>' 
+}) }}
+	</div>
+	<div class="col">
+		{{ form_row(form.pricing, { 
+    'label': 'Prix', 
+    'attr': { 'class': 'form-control mb-4', 'id': 'pricing', 'name': '_pricing', 'aria-label': 'pricing' }, 
+    'label_attr': {'class': 'form-label text-black'}, 
+    'separator': '<br><br>' 
+}) }}
+	</div>
+</div>
+
+<div class="row">
+	<div>
+		{{ form_row(form.content, { 
+    'label': 'Contenu', 
+    'attr': { 'class': 'form-control', 'id': 'content', 'name': '_content', 'aria-label': 'content' }, 
+    'label_attr': {'class': 'form-label text-black'}, 
+    'separator': '<br><br>' 
+}) }}
+	</div>
+</div>
+
+<div class="mb-4"></div>
+
+<div class="row row-cols-1 row-cols-md-2">
+	<div class="col">
+		{{ form_row(form.image, { 
+    'label': 'Image', 
+    'attr': { 'class': 'form-control mb-4', 'id': 'image', 'name': '_image', 'aria-label': 'image' }, 
+    'label_attr': {'class': 'form-label text-black'},
+    'separator': '<br><br>' 
+}) }}
+	</div>
+	<div class="col mb-4">
+		{% if cdb_recipes.image %}
+			<center><img style="max-width: 15em; width: auto;" src="{{ asset('uploads/images/' ~ cdb_recipes.image) }}"></center>
+		{% endif %}
+	</div>
+</div>
+
+<button class="btn btn-primary btn-sm mt-2" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">{{ button_label|default('Créer') }}</button>
+<a class="btn btn-secondary btn-sm mt-2" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;" href="{{ path('app_recipes_index') }}">Revenir à la liste</a>
 {{ form_end(form) }}
+

@@ -79,6 +79,7 @@ class UsersController extends AbstractController
     #[Route('/{id}', name: 'app_users_delete', methods: ['POST'])]
     public function delete(Request $request, CdbUsers $cdbUser, CdbUsersRepository $cdbUsersRepository): Response
     {
+        // Vérifie si l'utilisateur a le rôle ROLE_ADMIN, sinon l'accès est refusé
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         if ($this->isCsrfTokenValid('delete'.$cdbUser->getId(), $request->request->get('_token'))) {
