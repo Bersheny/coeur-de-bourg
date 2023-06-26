@@ -17,7 +17,7 @@
 						<img src="images/icons/undraw_fun-underline-blue.svg" width="45rem">
 						<p class="text-muted mb-0 mt-4">Située dans le village de
 							<b style="color: #46b4b4">Saint-Quentin-de-Caplong</b>,
-							<b style="color: #FF9FAC; font-family: Neucha; font-size: large;">Cœur de Bourg</b>
+							<b style="color: #FF9FAC; font-family: Neucha; font-size: large;">Cœur de bourg</b>
 							est une
 							<b style="color: #46b4b4">épicerie engagée</b>
 							dans la promotion du lien social.
@@ -68,7 +68,7 @@
 								</h1>
 								<img src="images/icons/undraw_fun-underline-blue.svg" width="45rem">
 								<p class="text-muted mb-0 mt-4">L'épicerie
-									<b style="color: #FF9FAC; font-family: Neucha; font-size: large;">Cœur de Bourg</b>
+									<b style="color: #FF9FAC; font-family: Neucha; font-size: large;">Cœur de bourg</b>
 									se situe au cœur du village de
 									<b style="color: #46b4b4">Saint-Quentin-de-Caplong</b>
 									<br><br>
@@ -84,8 +84,8 @@
 	</div>
 
 	{# Séparation entre partie 1 et partie 2 #}
-	<div style="overflow: hidden;" id="news">
-		<svg preserveaspectratio="none" viewbox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" style="fill: #FF9FAC; width: 125%; height: 75px; transform: rotate(180deg);">
+	<div style="overflow: hidden;">
+		<svg preserveaspectratio="none" viewbox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" style="fill: #FF9FAC; width: 120%; height: 50px; transform: rotate(180deg) scaleX(-1);">
 			<path d="M0 0v46.29c47.79 22.2 103.59 32.17 158 28 70.36-5.37 136.33-33.31 206.8-37.5 73.84-4.36 147.54 16.88 218.2 35.26 69.27 18 138.3 24.88 209.4 13.08 36.15-6 69.85-17.84 104.45-29.34C989.49 25 1113-14.29 1200 52.47V0z" opacity=".25"/>
 			<path d="M0 0v15.81c13 21.11 27.64 41.05 47.69 56.24C99.41 111.27 165 111 224.58 91.58c31.15-10.15 60.09-26.07 89.67-39.8 40.92-19 84.73-46 130.83-49.67 36.26-2.85 70.9 9.42 98.6 31.56 31.77 25.39 62.32 62 103.63 73 40.44 10.79 81.35-6.69 119.13-24.28s75.16-39 116.92-43.05c59.73-5.85 113.28 22.88 168.9 38.84 30.2 8.66 59 6.17 87.09-7.5 22.43-10.89 48-26.93 60.65-49.24V0z" opacity=".5"/>
 			<path d="M0 0v5.63C149.93 59 314.09 71.32 475.83 42.57c43-7.64 84.23-20.12 127.61-26.46 59-8.63 112.48 12.24 165.56 35.4C827.93 77.22 886 95.24 951.2 90c86.53-7 172.46-45.71 248.8-84.81V0z"/>
@@ -175,80 +175,84 @@
 				</h1>
 				<center><img src="images/icons/undraw_fun-underline-blue.svg" width="45rem"></center>
 
-				<div class="row row-cols-1 col-lg-4 g-4 pt-5">
+				<div class="row row-cols-1 g-4 pt-5">
 					{% for cdb_recipes in cdb_recipes %}
 						{% if cdb_recipes.id == featuredValue %}
 							<center>
-							<div class="col align-self-center">
-								<div class="card h-100">
-									<img src="/uploads/images/{{ cdb_recipes.image }}" class="card-img-top" alt="1">
-									<div class="card-body">
-										<h5 class="card-title" style="font-family: Amatic SC; font-size: 28px; font-weight: 700;">{{ cdb_recipes.title }}</h5>
-										{% if app.user %}
-											<p class="text-muted">
-												{% if cdb_recipes.createdBy %}Créée par "{{ cdb_recipes.createdBy.email }}"
+								<div class="col-lg-4">
+									<div class="card h-100">
+										<img src="/uploads/images/{{ cdb_recipes.image }}" class="card-img-top" alt="1">
+										<div class="card-body">
+											<h5 class="card-title" style="font-family: Amatic SC; font-size: 28px; font-weight: 700;">{{ cdb_recipes.title }}</h5>
+											{% if app.user %}
+												<p class="text-muted">
+													{% if cdb_recipes.createdBy %}Créée par "{{ cdb_recipes.createdBy.email }}"
+													{% endif %}
+													{% if cdb_recipes.createdAt %}
+														{% if not cdb_recipes.createdBy %}Créée
+														{% endif %}
+														le
+														{{ cdb_recipes.createdAt.format('d/m/Y \à H:i') }}</p>
 												{% endif %}
-												{% if cdb_recipes.createdAt %}
-													{% if not cdb_recipes.createdBy %}Créée
-													{% endif %}
-													le
-													{{ cdb_recipes.createdAt.format('d/m/Y \à H:i') }}</p>
 											{% endif %}
-										{% endif %}
-										<div class="row row-cols-1 row-cols-md-3">
-											<div class="col text-muted">
-												<center>
-													<i class="fa-solid fa-clock fa-sm"></i>
-													{% if cdb_recipes.timeDays %}
-														{{ cdb_recipes.timeDays }}
-														j
-													{% endif %}
-													{% if cdb_recipes.timeHours %}
-														{{ cdb_recipes.timeHours }}
-														h
-													{% endif %}
-													{{ cdb_recipes.timeMinutes }}
-													min</center>
+											<div class="row row-cols-1 row-cols-md-3">
+												<div class="col text-muted">
+													<center>
+														<i class="fa-solid fa-clock fa-sm"></i>
+														{% if cdb_recipes.timeDays %}
+															{{ cdb_recipes.timeDays }}
+															j
+														{% endif %}
+														{% if cdb_recipes.timeHours %}
+															{{ cdb_recipes.timeHours }}
+															h
+														{% endif %}
+														{{ cdb_recipes.timeMinutes }}
+														min</center>
+												</div>
+												<div class="col text-muted">
+													<center>
+														<i class="fa-solid fa-brain fa-sm"></i>
+														{{ cdb_recipes.difficulty }}</center>
+												</div>
+												<div class="col text-muted">
+													<center>
+														<i class="fa-solid fa-euro-sign fa-sm"></i>
+														{{ cdb_recipes.pricing }}</center>
+												</div>
 											</div>
-											<div class="col text-muted">
-												<center>
-													<i class="fa-solid fa-brain fa-sm"></i>
-													{{ cdb_recipes.difficulty }}</center>
-											</div>
-											<div class="col text-muted">
-												<center>
-													<i class="fa-solid fa-euro-sign fa-sm"></i>
-													{{ cdb_recipes.pricing }}</center>
-											</div>
+											<p class="card-text line-clamp text-muted">{{ cdb_recipes.description }}</p>
 										</div>
-										<p class="card-text line-clamp text-muted">{{ cdb_recipes.description }}</p>
-									</div>
-									<div class="card-footer text-center">
-										<a href="{{ path('app_recipes_show', {'id': cdb_recipes.id}) }}" class="btn btn-primary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">VOIR LA RECETTE</a>
-										{% if app.user %}
-											<a href="{{ path('app_recipes_edit', {'id': cdb_recipes.id}) }}" class="btn btn-secondary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">MODIFIER</a>
+										<div class="card-footer text-center">
+											<a href="{{ path('app_recipes_show', {'id': cdb_recipes.id}) }}" class="btn btn-primary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">VOIR LA RECETTE</a>
+											{% if app.user %}
+												<a href="{{ path('app_recipes_edit', {'id': cdb_recipes.id}) }}" class="btn btn-secondary btn-sm" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">MODIFIER</a>
 
-											{{ include('recipes/_delete_form.html.twig') }}
-										{% endif %}
+												{{ include('recipes/_delete_form.html.twig') }}
+											{% endif %}
+										</div>
 									</div>
 								</div>
-							</div>
 							</center>
-							{% endif %}
-						{% else %}
-							<td colspan="9">Il n'y a aucune recette !</td>
-						{% endfor %}
-					</div>
+						{% endif %}
+					{% else %}
+						<td colspan="9">Il n'y a aucune recette !</td>
+					{% endfor %}
 				</div>
 
-				{# Séparation entre partie 3 et partie 4 #}
-				<div style="overflow: hidden;" id="contact">
-					<svg preserveaspectratio="none" viewbox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" style="fill: #FF9FAC; width: 125%; height: 75px; transform: rotate(180deg);">
-						<path d="M0 0v46.29c47.79 22.2 103.59 32.17 158 28 70.36-5.37 136.33-33.31 206.8-37.5 73.84-4.36 147.54 16.88 218.2 35.26 69.27 18 138.3 24.88 209.4 13.08 36.15-6 69.85-17.84 104.45-29.34C989.49 25 1113-14.29 1200 52.47V0z" opacity=".25"/>
-						<path d="M0 0v15.81c13 21.11 27.64 41.05 47.69 56.24C99.41 111.27 165 111 224.58 91.58c31.15-10.15 60.09-26.07 89.67-39.8 40.92-19 84.73-46 130.83-49.67 36.26-2.85 70.9 9.42 98.6 31.56 31.77 25.39 62.32 62 103.63 73 40.44 10.79 81.35-6.69 119.13-24.28s75.16-39 116.92-43.05c59.73-5.85 113.28 22.88 168.9 38.84 30.2 8.66 59 6.17 87.09-7.5 22.43-10.89 48-26.93 60.65-49.24V0z" opacity=".5"/>
-						<path d="M0 0v5.63C149.93 59 314.09 71.32 475.83 42.57c43-7.64 84.23-20.12 127.61-26.46 59-8.63 112.48 12.24 165.56 35.4C827.93 77.22 886 95.24 951.2 90c86.53-7 172.46-45.71 248.8-84.81V0z"/>
-					</svg>
+				<div class="col-lg-8 mx-auto mt-5 text-center">
+					<a href="/recettes" class="btn btn-primary btn-sm" style="font-family: Amatic SC; font-size: 28px; font-weight: 700;">Toutes les recettes
+						<img src="images/icons/undraw_circled-arrow-white.svg" width="15rem"></a>
 				</div>
+			</div>
+
+			{# Séparation entre partie 3 et partie 4 #}
+			<div style="overflow: hidden;">
+				<svg preserveaspectratio="none" viewbox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" style="fill: #FF9FAC; width: 120%; height: 50px; transform: rotate(180deg) scaleX(-1);">
+					<path d="M0 0v46.29c47.79 22.2 103.59 32.17 158 28 70.36-5.37 136.33-33.31 206.8-37.5 73.84-4.36 147.54 16.88 218.2 35.26 69.27 18 138.3 24.88 209.4 13.08 36.15-6 69.85-17.84 104.45-29.34C989.49 25 1113-14.29 1200 52.47V0z" opacity=".25"/>
+					<path d="M0 0v15.81c13 21.11 27.64 41.05 47.69 56.24C99.41 111.27 165 111 224.58 91.58c31.15-10.15 60.09-26.07 89.67-39.8 40.92-19 84.73-46 130.83-49.67 36.26-2.85 70.9 9.42 98.6 31.56 31.77 25.39 62.32 62 103.63 73 40.44 10.79 81.35-6.69 119.13-24.28s75.16-39 116.92-43.05c59.73-5.85 113.28 22.88 168.9 38.84 30.2 8.66 59 6.17 87.09-7.5 22.43-10.89 48-26.93 60.65-49.24V0z" opacity=".5"/>
+					<path d="M0 0v5.63C149.93 59 314.09 71.32 475.83 42.57c43-7.64 84.23-20.12 127.61-26.46 59-8.63 112.48 12.24 165.56 35.4C827.93 77.22 886 95.24 951.2 90c86.53-7 172.46-45.71 248.8-84.81V0z"/>
+				</svg>
 			</div>
 
 			{# Partie 4 #}
