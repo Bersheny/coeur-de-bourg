@@ -1,4 +1,0 @@
-<form method="post" action="{{ path('app_news_delete', {'id': tbl_news.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette news ?');">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ tbl_news.id) }}">
-    <button class="btn btn-danger btn-sm mt-2" style="font-family: Amatic SC; font-size: 22px; font-weight: 700;">Supprimer</button>
-</form>
