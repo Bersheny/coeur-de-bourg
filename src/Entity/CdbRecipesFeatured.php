@@ -6,6 +6,7 @@ use App\Repository\CdbRecipesFeaturedRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CdbRecipesFeaturedRepository::class)]
+#[ORM\Table(name: 'cdb_recipes_featured')]
 class CdbRecipesFeatured
 {
     #[ORM\Id]
