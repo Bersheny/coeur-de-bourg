@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230922190421 extends AbstractMigration
+final class Version20240315094729 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -28,15 +28,11 @@ final class Version20230922190421 extends AbstractMigration
         $this->addSql('ALTER TABLE cdb_news ADD CONSTRAINT FK_8757A0C0B03A8386 FOREIGN KEY (created_by_id) REFERENCES cdb_users (id)');
         $this->addSql('ALTER TABLE cdb_partners ADD CONSTRAINT FK_362449CAB03A8386 FOREIGN KEY (created_by_id) REFERENCES cdb_users (id)');
         $this->addSql('ALTER TABLE cdb_recipes ADD CONSTRAINT FK_BA2B905CB03A8386 FOREIGN KEY (created_by_id) REFERENCES cdb_users (id)');
-        $this->addSql('DROP TABLE tbl_news');
-        $this->addSql('DROP TABLE tbl_users');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE tbl_news (id INT AUTO_INCREMENT NOT NULL, title VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_unicode_ci`, content LONGTEXT CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_unicode_ci`, image VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_unicode_ci`, start_date_time DATE DEFAULT NULL, end_date_time DATE DEFAULT NULL, created_at DATE NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
-        $this->addSql('CREATE TABLE tbl_users (id INT AUTO_INCREMENT NOT NULL, email VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_unicode_ci`, first_name VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_unicode_ci`, last_name VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_unicode_ci`, password VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_unicode_ci`, role LONGTEXT CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_unicode_ci`, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
         $this->addSql('ALTER TABLE cdb_news DROP FOREIGN KEY FK_8757A0C0B03A8386');
         $this->addSql('ALTER TABLE cdb_partners DROP FOREIGN KEY FK_362449CAB03A8386');
         $this->addSql('ALTER TABLE cdb_recipes DROP FOREIGN KEY FK_BA2B905CB03A8386');
