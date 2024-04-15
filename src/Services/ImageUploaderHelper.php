@@ -11,12 +11,11 @@ class ImageUploaderHelper {
 
     private $slugger;
     private $params;
-    private $flash;
 
     public function __construct(SluggerInterface $slugger, ParameterBagInterface $params) {
         $this->slugger = $slugger;
         $this->params = $params;
-        }
+    }
 
     public function uploadImage($form, $news): String {
         $errorMessage = "";

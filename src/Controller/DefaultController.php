@@ -51,7 +51,6 @@ class DefaultController extends AbstractController
 
         $mailer->send($email);
 
-        // Add a flash message to indicate success
         $this->addFlash('success', 'Le message a bien été envoyé, nous vous recontacterons par mail ou par téléphone le plus vite possible !');
 
         return new RedirectResponse($this->generateUrl('app_default_index'));
