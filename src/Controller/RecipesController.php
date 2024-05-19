@@ -27,21 +27,31 @@ class RecipesController extends AbstractController
         ]);
     }
 
-    #[Route('/', name: 'app_set_featured_recipe', methods: ['POST'])]
-    public function setFeaturedRecipe(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $featuredRecipeId = $request->request->getInt('featuredRecipeId');
-        $cdbRecipesFeaturedRepository = $entityManager->getRepository(CdbRecipesFeatured::class);
-        $featuredRecipe = $cdbRecipesFeaturedRepository->find(1); // Assuming the featured recipe is stored with ID 1
-    
-        if ($featuredRecipe) {
-            // Set the "featured" value based on the clicked recipe ID
-            $featuredRecipe->setFeatured($featuredRecipeId);
-            $entityManager->flush();
-        }
-    
-        return $this->redirectToRoute('app_default_index');
+#[Route('/', name: 'app_set_featured_recipe', methods: ['POST'])]
+public function setFeaturedRecipe(Request $request, EntityManagerInterface $entityManager): Response
+{
+    $featuredRecipeId = $request->request->getInt('featuredRecipeId');
+    $cdbRecipesFeaturedRepository = $entityManager->getRepository(CdbRecipesFeatured::class);
+    $featuredRecipe = $cdbRecipesFeaturedRepository->find(1); // Assuming the featured recipe is stored with ID 1
+
+    if (!$featuredRecipe) {
+        // Create a new instance if no featured recipe exists
+        $featuredRecipe = new CdbRecipesFeatured();
+        // Set any default values if needed
+        // $featuredRecipe->setSomeProperty($defaultValue);
+        // For example, if you have an ID property, set it here
+        $featuredRecipe->setId(1); // Assuming ID 1
+        // Persist the new instance
+        $entityManager->persist($featuredRecipe);
     }
+
+    // Set the "featured" value based on the clicked recipe ID
+    $featuredRecipe->setFeatured($featuredRecipeId);
+    $entityManager->flush();
+
+    return $this->redirectToRoute('app_default_index');
+}
+
 
     #[Route('/new', name: 'app_recipes_new', methods: ['GET', 'POST'])]
     public function new(Request $request, CdbRecipesRepository $cdbRecipesRepository, ImageUploaderHelper $imageUploaderHelper): Response
